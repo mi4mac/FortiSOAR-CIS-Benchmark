@@ -67,7 +67,9 @@
                 "triggerOnReplicate": false,
                 "noRecordExecution": true,
                 "singleRecordExecution": false,
-                "resources": []
+                "resources": [
+                  "cis_benchmark_rule"
+                ]
               },
               "status": null,
               "top": "30",
