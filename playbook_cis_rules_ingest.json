@@ -101,7 +101,148 @@
                 "step_variables": [],
                 "config": "{{ vars.input.code_snippet_config }}",
                 "params": {
-                  "python_function": "import csv\nimport io\nimport json\nimport urllib.request\n\n\ndef get_path(payload, path):\n    cur = payload\n    for key in path:\n        if isinstance(key, int):\n            if not isinstance(cur, list) or key >= len(cur):\n                return None\n            cur = cur[key]\n        else:\n            if not isinstance(cur, dict) or key not in cur:\n                return None\n            cur = cur[key]\n    return cur\n\n\ncsv_text_candidates = [\n    \"\"\"{{ vars.input.csv_text | default('') }}\"\"\",\n    \"\"\"{{ vars.input.data.csv_text | default('') }}\"\"\",\n    \"\"\"{{ vars.request.data.csv_text | default('') }}\"\"\",\n    \"\"\"{{ vars.request.data.input.csv_text | default('') }}\"\"\",\n    \"\"\"{{ vars.request.data.params.csv_text | default('') }}\"\"\",\n    \"\"\"{{ vars.request.data.records[0].csv_text | default('') }}\"\"\",\n    \"\"\"{{ vars.input.records[0].csv_text | default('') }}\"\"\"\n]\n\ncsv_url_candidates = [\n    \"{{ vars.input.csv_url | default('') }}\",\n    \"{{ vars.input.data.csv_url | default('') }}\",\n    \"{{ vars.request.data.csv_url | default('') }}\",\n    \"{{ vars.request.data.input.csv_url | default('') }}\",\n    \"{{ vars.request.data.params.csv_url | default('') }}\",\n    \"{{ vars.request.data.records[0].csv_url | default('') }}\",\n    \"{{ vars.input.records[0].csv_url | default('') }}\"\n]\n\nraw_payload_candidates = [\n    \"\"\"{{ (vars.request.data | default({})) | toJSON }}\"\"\",\n    \"\"\"{{ (vars.input.data | default({})) | toJSON }}\"\"\",\n    \"\"\"{{ (vars.input | default({})) | toJSON }}\"\"\"\n]\n\nfile_text = \"\"\"{{ vars.steps.Read_CSV_File.file_contents | default('') }}\"\"\"\n\nfsr_file_text = \"\"\"{{ fsr_steps_result.Read_CSV_File.file_contents | default('') }}\"\"\"\n\ncsv_text = \"\"\nfor candidate in csv_text_candidates:\n    if candidate and candidate.strip():\n        csv_text = candidate\n        break\n\nif not csv_text:\n    csv_url = \"\"\n    for candidate in csv_url_candidates:\n        if candidate and str(candidate).strip():\n            csv_url = str(candidate).strip()\n            break\n    if csv_url:\n        with urllib.request.urlopen(csv_url) as response:\n            csv_bytes = response.read()\n        csv_text = csv_bytes.decode(\"utf-8\", errors=\"replace\")\n\nif not csv_text and file_text and file_text.strip():\n    csv_text = file_text\nif not csv_text and fsr_file_text and fsr_file_text.strip():\n    csv_text = fsr_file_text\n\nif not csv_text:\n    for raw in raw_payload_candidates:\n        if not raw or not raw.strip():\n            continue\n        try:\n            payload = json.loads(raw)\n        except Exception:\n            continue\n        for path in [\n            (\"csv_text\",),\n            (\"csv_url\",),\n            (\"input\", \"csv_text\"),\n            (\"input\", \"csv_url\"),\n            (\"data\", \"csv_text\"),\n            (\"data\", \"csv_url\"),\n            (\"records\", 0, \"csv_text\"),\n            (\"records\", 0, \"csv_url\")\n        ]:\n            value = get_path(payload, path)\n            if isinstance(value, str) and value.strip():\n                if \"url\" in path[-1]:\n                    with urllib.request.urlopen(value.strip()) as response:\n                        csv_bytes = response.read()\n                    csv_text = csv_bytes.decode(\"utf-8\", errors=\"replace\")\n                else:\n                    csv_text = value\n                break\n        if csv_text:\n            break\n\nif not csv_text:\n    raise Exception(\"No CSV provided. Use csv_file upload, csv_url, or csv_text.\")\n\nreader = csv.DictReader(io.StringIO(csv_text))\n\nrequired_fields = [\n    \"rule_id\",\n    \"benchmark\",\n    \"device_type\",\n    \"cis_level\",\n    \"severity\"\n]\njson_fields = [\n    \"expected_values\",\n    \"validation_logic\",\n    \"remediation_steps\"\n]\n\nrules_list = []\nvalidation_errors = []\n\nrow_index = 1\nfor row in reader:\n    row_index += 1\n    normalized = {}\n    for key, value in row.items():\n        if key is None:\n            continue\n        key = key.strip()\n        if isinstance(value, str):\n            value = value.strip()\n        normalized[key] = value\n\n    if \"references\" in normalized and \"references_text\" not in normalized:\n        normalized[\"references_text\"] = normalized.pop(\"references\")\n\n    missing = [field for field in required_fields if not normalized.get(field)]\n    if missing:\n        validation_errors.append({\n            \"row\": row_index,\n            \"rule_id\": normalized.get(\"rule_id\"),\n            \"missing\": missing\n        })\n        continue\n\n    parsed = {}\n    parsed.update(normalized)\n\n    for field in json_fields:\n        raw_value = normalized.get(field)\n        if raw_value in (None, \"\"):\n            parsed[field] = None\n            continue\n        if isinstance(raw_value, str) and raw_value.lstrip().startswith(('{', '[')):\n            try:\n                parsed[field] = json.loads(raw_value)\n            except Exception:\n                validation_errors.append({\n                    \"row\": row_index,\n                    \"rule_id\": normalized.get(\"rule_id\"),\n                    \"invalid_json\": field\n                })\n                parsed[field] = raw_value\n        else:\n            parsed[field] = raw_value\n\n    raw_is_active = normalized.get(\"is_active\")\n    if raw_is_active in (None, \"\"):\n        parsed[\"is_active\"] = True\n    else:\n        parsed[\"is_active\"] = str(raw_is_active).strip().lower() in (\"true\", \"1\", \"yes\", \"y\")\n\n    rules_list.append(parsed)\n\nprint(json.dumps({\n    \"rules_list\": rules_list,\n    \"validation_errors\": validation_errors\n}))\n"
+                  "python_function": "import csv
+import io
+import json
+import urllib.request
+
+
+def get_path(payload, path):
+    cur = payload
+    for key in path:
+        if isinstance(key, int):
+            if not isinstance(cur, list) or key >= len(cur):
+                return None
+            cur = cur[key]
+        else:
+            if not isinstance(cur, dict) or key not in cur:
+                return None
+            cur = cur[key]
+    return cur
+
+
+def fetch_attachment(iri):
+    if not iri:
+        return ""
+    if not iri.startswith("/api/3/attachments/"):
+        return ""
+    with urllib.request.urlopen(iri) as response:
+        data = response.read()
+    return data.decode("utf-8", errors="replace")
+
+
+csv_text_candidates = [
+    """{{ vars.input.csv_text | default('') }}""",
+    """{{ vars.input.data.csv_text | default('') }}""",
+    """{{ vars.request.data.csv_text | default('') }}""",
+    """{{ vars.request.data.input.csv_text | default('') }}""",
+    """{{ vars.request.data.params.csv_text | default('') }}""",
+    """{{ vars.request.data.records[0].csv_text | default('') }}""",
+    """{{ vars.input.records[0].csv_text | default('') }}"""
+]
+
+csv_url_candidates = [
+    "{{ vars.input.csv_url | default('') }}",
+    "{{ vars.input.data.csv_url | default('') }}",
+    "{{ vars.request.data.csv_url | default('') }}",
+    "{{ vars.request.data.input.csv_url | default('') }}",
+    "{{ vars.request.data.params.csv_url | default('') }}",
+    "{{ vars.request.data.records[0].csv_url | default('') }}",
+    "{{ vars.input.records[0].csv_url | default('') }}"
+]
+
+attachment_candidates = [
+    "{{ vars.input.attachment_iri | default('') }}",
+    "{{ vars.input.data.attachment_iri | default('') }}",
+    "{{ vars.request.data.attachment_iri | default('') }}",
+    "{{ vars.request.data.input.attachment_iri | default('') }}",
+    "{{ vars.request.data.params.attachment_iri | default('') }}",
+    "{{ vars.request.data.records[0].attachment_iri | default('') }}",
+    "{{ vars.input.records[0].attachment_iri | default('') }}"
+]
+
+raw_payload_candidates = [
+    """{{ (vars.request.data | default({})) | toJSON }}""",
+    """{{ (vars.input.data | default({})) | toJSON }}""",
+    """{{ (vars.input | default({})) | toJSON }}"""
+]
+
+file_text = """{{ vars.steps.Read_CSV_File.file_contents | default('') }}"""
+
+fsr_file_text = """{{ fsr_steps_result.Read_CSV_File.file_contents | default('') }}"""
+
+csv_text = ""
+for candidate in csv_text_candidates:
+    if candidate and candidate.strip():
+        csv_text = candidate
+        break
+
+if not csv_text:
+    csv_url = ""
+    for candidate in csv_url_candidates:
+        if candidate and str(candidate).strip():
+            csv_url = str(candidate).strip()
+            break
+    if csv_url:
+        with urllib.request.urlopen(csv_url) as response:
+            csv_bytes = response.read()
+        csv_text = csv_bytes.decode("utf-8", errors="replace")
+
+if not csv_text:
+    attachment_iri = ""
+    for candidate in attachment_candidates:
+        if candidate and str(candidate).strip():
+            attachment_iri = str(candidate).strip()
+            break
+    if attachment_iri:
+        csv_text = fetch_attachment(attachment_iri)
+
+if not csv_text and file_text and file_text.strip():
+    csv_text = file_text
+
+if not csv_text and fsr_file_text and fsr_file_text.strip():
+    csv_text = fsr_file_text
+
+if not csv_text:
+    for raw in raw_payload_candidates:
+        if not raw or not raw.strip():
+            continue
+        try:
+            payload = json.loads(raw)
+        except Exception:
+            continue
+        for path in [
+            ("csv_text",),
+            ("csv_url",),
+            ("attachment_iri",),
+            ("input", "csv_text"),
+            ("input", "csv_url"),
+            ("input", "attachment_iri"),
+            ("data", "csv_text"),
+            ("data", "csv_url"),
+            ("data", "attachment_iri"),
+            ("records", 0, "csv_text"),
+            ("records", 0, "csv_url"),
+            ("records", 0, "attachment_iri")
+        ]:
+            value = get_path(payload, path)
+            if isinstance(value, str) and value.strip():
+                if "url" in path[-1]:
+                    with urllib.request.urlopen(value.strip()) as response:
+                        csv_bytes = response.read()
+                    csv_text = csv_bytes.decode("utf-8", errors="replace")
+                elif "attachment_iri" in path[-1]:
+                    csv_text = fetch_attachment(value.strip())
+                else:
+                    csv_text = value
+                break
+        if csv_text:
+            break
+
+if not csv_text:
+    raise Exception("No CSV provided. Use csv_file upload, csv_url, csv_text, or attachment_iri.")
+
+reader = csv.DictReader(io.StringIO(csv_text))\n"
                 },
                 "version": "2.1.4",
                 "connector": "code-snippet",
