@@ -30,7 +30,7 @@
             {
               "@type": "WorkflowStep",
               "name": "Start",
-              "description": "Manual trigger with CSV input.",
+              "description": "Manual trigger with CSV file upload.",
               "arguments": {
                 "__triggerLimit": true,
                 "step_variables": {

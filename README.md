@@ -85,10 +85,8 @@ Notes
   `device_type`, `cis_level`, `severity`), parses JSON fields
   (`expected_values`, `validation_logic`, `remediation_steps`), and returns a
   result summary with ingested/invalid counts and invalid rows.
-  The `Read CSV File` step uses `vars.input.csv_file` directly. If your
-  environment provides only a File IRI instead of contents, switch the
-  expression to `{{ vars.input.csv_file | readfile }}` (if the `readfile`
-  filter is enabled in your FortiSOAR instance).
+  It reads the CSV from the `csv_file` upload input. When you manually run the
+  playbook, FortiSOAR shows a popup input form where you can upload the file.
   Note: the CSV column `references` is mapped to module field
   `references_text` because `references` is a reserved keyword in FortiSOAR.
   The `Parse CSV` step uses the Code Snippet connector; provide the
