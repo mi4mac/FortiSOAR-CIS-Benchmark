@@ -64,7 +64,10 @@
                   }
                 },
                 "triggerOnSource": true,
-                "triggerOnReplicate": false
+                "triggerOnReplicate": false,
+                "noRecordExecution": true,
+                "singleRecordExecution": false,
+                "resources": []
               },
               "status": null,
               "top": "30",
