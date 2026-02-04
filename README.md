@@ -87,8 +87,10 @@ Notes
   `device_type`, `cis_level`, `severity`), parses JSON fields
   (`expected_values`, `validation_logic`, `remediation_steps`), and returns a
   result summary with ingested/invalid counts and invalid rows.
-  It reads the CSV from the `csv_file` upload input. When you manually run the
-  playbook, FortiSOAR shows a popup input form where you can upload the file.
+  It accepts the CSV from one of three inputs (first match wins):
+  - `csv_text` (paste CSV text in the trigger input JSON)
+  - `csv_url` (GitHub raw URL or any reachable URL)
+  - `csv_file` (file upload, if your instance shows the upload popup)
   Note: the CSV column `references` is mapped to module field
   `references_text` because `references` is a reserved keyword in FortiSOAR.
   The `Parse CSV` step uses the Code Snippet connector; provide the
