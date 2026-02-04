@@ -55,7 +55,7 @@
               "status": null,
               "top": "30",
               "left": "125",
-              "stepType": "/api/3/workflow_step_types/REPLACE_MANUAL_TRIGGER_STEP_TYPE",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
               "group": null,
               "uuid": "2ddf9c9a-2bd1-4c0c-9f5a-7d7ccaa6a1b0"
             },

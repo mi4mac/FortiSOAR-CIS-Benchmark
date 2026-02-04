@@ -63,7 +63,7 @@ Notes
 - `playbook_cis_rules_ingest.json` includes step type UUIDs. Replace them if
   your instance uses different UUIDs:
   - Manual Trigger step type UUID (required for the upload popup)
-    - Replace: `REPLACE_MANUAL_TRIGGER_STEP_TYPE`
+    - This instance value: `f414d039-bb0d-4e59-9c39-a8f1e880b18a`
   - Code Snippet step type UUID
     - This instance value: `1fdd14cc-d6b4-4335-a3af-ab49c8ed2fd8`
   - Create Record step type UUID
