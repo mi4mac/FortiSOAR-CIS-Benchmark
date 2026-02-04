@@ -62,6 +62,8 @@ Notes
   `CIS Benchmark Rule`.
 - `playbook_cis_rules_ingest.json` includes step type UUIDs. Replace them if
   your instance uses different UUIDs:
+  - Manual Trigger step type UUID (required for the upload popup)
+    - Replace: `REPLACE_MANUAL_TRIGGER_STEP_TYPE`
   - Code Snippet step type UUID
     - This instance value: `1fdd14cc-d6b4-4335-a3af-ab49c8ed2fd8`
   - Create Record step type UUID
@@ -77,7 +79,7 @@ Notes
     - Example with a dummy key:
       `curl -k -H "Authorization: API-KEY 00000000000000000000000000000000" -H "Content-Type: application-key/json;charset=UTF-8" -H "Accept: application/json" "https://192.0.2.10/api/3/workflow_step_types?$limit=200"`
     - Find entries with names/titles matching:
-      `Code Snippet`, `Create Record`, `Message`.
+      `Manual Trigger`, `Code Snippet`, `Create Record`, `Message`.
     - Copy the UUID from each entry and replace the UUIDs in the playbook.
     - If no `Message` step type exists, use `Set Playbook Result`
       (`9dcc4bf5-b6cf-4a5c-b545-1fac3b9e33e6`) or remove the `Done` step.
