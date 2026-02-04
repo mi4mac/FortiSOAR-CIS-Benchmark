@@ -91,6 +91,9 @@ Notes
   - `csv_text` (paste CSV text in the trigger input JSON)
   - `csv_url` (GitHub raw URL or any reachable URL)
   - `csv_file` (file upload, if your instance shows the upload popup)
+  If your UI only shows the "Trigger Playbook With Sample Data" dialog, you
+  can still paste JSON there without selecting a record; the playbook now
+  declares `csv_url`, `csv_text`, and `code_snippet_config` as parameters.
   Note: the CSV column `references` is mapped to module field
   `references_text` because `references` is a reserved keyword in FortiSOAR.
   The `Parse CSV` step uses the Code Snippet connector; provide the

@@ -21,7 +21,11 @@
           "debug": true,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
-          "parameters": [],
+          "parameters": [
+            "csv_url",
+            "csv_text",
+            "code_snippet_config"
+          ],
           "synchronous": false,
           "collection": "/api/3/workflow_collections/f21d72c7-3d95-4bb8-8b42-1a2f1e0c1b01",
           "versions": [],
