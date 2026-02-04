@@ -1,0 +1,197 @@
+{
+  "type": "workflow_collections",
+  "data": [
+    {
+      "@context": "/api/3/contexts/WorkflowCollection",
+      "@type": "WorkflowCollection",
+      "name": "CIS Compliance",
+      "description": "Playbooks for CIS compliance data ingestion.",
+      "visible": true,
+      "image": null,
+      "uuid": "f21d72c7-3d95-4bb8-8b42-1a2f1e0c1b01",
+      "workflows": [
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Ingest CIS Benchmark Rules (CSV)",
+          "aliasName": null,
+          "tag": null,
+          "description": "Manual CSV ingestion into CIS Benchmark Rule.",
+          "isActive": true,
+          "debug": true,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "collection": "/api/3/workflow_collections/f21d72c7-3d95-4bb8-8b42-1a2f1e0c1b01",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/2ddf9c9a-2bd1-4c0c-9f5a-7d7ccaa6a1b0",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": "Manual trigger with CSV input.",
+              "arguments": {
+                "__triggerLimit": true,
+                "step_variables": {
+                  "input": {
+                    "params": [
+                      {
+                        "name": "csv_file",
+                        "type": "file",
+                        "title": "CIS Rules CSV"
+                      },
+                      {
+                        "name": "code_snippet_config",
+                        "type": "text",
+                        "title": "Code Snippet Config UUID"
+                      }
+                    ]
+                  }
+                },
+                "triggerOnSource": true,
+                "triggerOnReplicate": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+              "group": null,
+              "uuid": "2ddf9c9a-2bd1-4c0c-9f5a-7d7ccaa6a1b0"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Read CSV File",
+              "description": "Read CSV contents from uploaded file.",
+              "arguments": {
+                "step_variables": [],
+                "file_contents": "{{ vars.input.csv_file }}"
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+              "group": null,
+              "uuid": "7d2f2f3f-4d6a-4a56-9f70-4f5f6b0a1e3b"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Parse CSV",
+              "description": "Parse CSV to list of rule objects.",
+              "arguments": {
+                "step_variables": [],
+                "config": "{{ vars.input.code_snippet_config }}",
+                "params": {
+                  "python_function": "import csv\nimport io\nimport json\n\ncsv_text = \"\"\"{{ vars.steps.Read_CSV_File.file_contents }}\"\"\"\nreader = csv.DictReader(io.StringIO(csv_text))\n\nrequired_fields = [\n    \"rule_id\",\n    \"benchmark\",\n    \"device_type\",\n    \"cis_level\",\n    \"severity\"\n]\njson_fields = [\n    \"expected_values\",\n    \"validation_logic\",\n    \"remediation_steps\"\n]\n\nrules_list = []\nvalidation_errors = []\n\nrow_index = 1\nfor row in reader:\n    row_index += 1\n    normalized = {}\n    for key, value in row.items():\n        if key is None:\n            continue\n        key = key.strip()\n        if isinstance(value, str):\n            value = value.strip()\n        normalized[key] = value\n\n    if \"references\" in normalized and \"references_text\" not in normalized:\n        normalized[\"references_text\"] = normalized.pop(\"references\")\n\n    missing = [field for field in required_fields if not normalized.get(field)]\n    if missing:\n        validation_errors.append({\n            \"row\": row_index,\n            \"rule_id\": normalized.get(\"rule_id\"),\n            \"missing\": missing\n        })\n        continue\n\n    parsed = {}\n    parsed.update(normalized)\n\n    for field in json_fields:\n        raw_value = normalized.get(field)\n        if raw_value in (None, \"\"):\n            parsed[field] = None\n            continue\n        if isinstance(raw_value, str) and raw_value.lstrip().startswith(('{', '[')):\n            try:\n                parsed[field] = json.loads(raw_value)\n            except Exception:\n                validation_errors.append({\n                    \"row\": row_index,\n                    \"rule_id\": normalized.get(\"rule_id\"),\n                    \"invalid_json\": field\n                })\n                parsed[field] = raw_value\n        else:\n            parsed[field] = raw_value\n\n    raw_is_active = normalized.get(\"is_active\")\n    if raw_is_active in (None, \"\"):\n        parsed[\"is_active\"] = True\n    else:\n        parsed[\"is_active\"] = str(raw_is_active).strip().lower() in (\"true\", \"1\", \"yes\", \"y\")\n\n    rules_list.append(parsed)\n\nprint(json.dumps({\n    \"rules_list\": rules_list,\n    \"validation_errors\": validation_errors\n}))\n"
+                },
+                "version": "2.1.4",
+                "connector": "code-snippet",
+                "operation": "python_inline_code_editor",
+                "operationTitle": "Execute Python Code"
+              },
+              "status": null,
+              "top": "300",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/1fdd14cc-d6b4-4335-a3af-ab49c8ed2fd8",
+              "group": null,
+              "uuid": "5d4f6c6a-4b73-4f1b-9c23-7a1a7f0d6c2b"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Ingest CIS Benchmark Rules",
+              "description": "Create CIS Benchmark Rule records from parsed rules.",
+              "arguments": {
+                "for_each": {
+                  "item": "{{ vars.steps.Parse_CSV.data['code_output'].rules_list }}",
+                  "__bulk": true,
+                  "parallel": false,
+                  "condition": "",
+                  "batch_size": 500
+                },
+                "resource": "{{ vars.item }}",
+                "_showJson": false,
+                "collection": "/api/3/cis_benchmark_rule",
+                "__recommend": [],
+                "step_variables": []
+              },
+              "status": null,
+              "top": "435",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/2597053c-e718-44b4-8394-4d40fe26d357",
+              "group": null,
+              "uuid": "f07f8f0c-3d2a-4f60-8f8b-0e8a0f0b5d1a"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Done",
+              "description": "Set playbook result and end workflow.",
+              "arguments": {
+                "step_variables": [],
+                "result": "{% set parsed = vars.steps.Parse_CSV.data['code_output'] %}{\"ingested_count\": {{ parsed.rules_list | length }}, \"invalid_count\": {{ parsed.validation_errors | length }}, \"invalid_rows\": {{ parsed.validation_errors | toJSON }} }"
+              },
+              "status": null,
+              "top": "570",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/9dcc4bf5-b6cf-4a5c-b545-1fac3b9e33e6",
+              "group": null,
+              "uuid": "1c8a3f7b-8f6a-45a7-bf71-7f5c2b0f9a3c"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Read CSV File",
+              "targetStep": "/api/3/workflow_steps/7d2f2f3f-4d6a-4a56-9f70-4f5f6b0a1e3b",
+              "sourceStep": "/api/3/workflow_steps/2ddf9c9a-2bd1-4c0c-9f5a-7d7ccaa6a1b0",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "6a6c1d8f-2a5d-4f08-8f47-9b2f1b8b2a90"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Read CSV File -> Parse CSV",
+              "targetStep": "/api/3/workflow_steps/5d4f6c6a-4b73-4f1b-9c23-7a1a7f0d6c2b",
+              "sourceStep": "/api/3/workflow_steps/7d2f2f3f-4d6a-4a56-9f70-4f5f6b0a1e3b",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "97e7a5c6-4f8f-4b0d-9a2b-0c8c7d4f2e11"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Parse CSV -> Ingest CIS Benchmark Rules",
+              "targetStep": "/api/3/workflow_steps/f07f8f0c-3d2a-4f60-8f8b-0e8a0f0b5d1a",
+              "sourceStep": "/api/3/workflow_steps/5d4f6c6a-4b73-4f1b-9c23-7a1a7f0d6c2b",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "b5b7cbd4-7f8a-4c0b-9a0c-3b1d2f4e5c6a"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Ingest CIS Benchmark Rules -> Done",
+              "targetStep": "/api/3/workflow_steps/1c8a3f7b-8f6a-45a7-bf71-7f5c2b0f9a3c",
+              "sourceStep": "/api/3/workflow_steps/f07f8f0c-3d2a-4f60-8f8b-0e8a0f0b5d1a",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "d2a1b9c4-3e2f-4a8b-9c1d-5f6a7b8c9d0e"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
+          "uuid": "a17f0f7d-0f3d-4f5b-9c62-1b5b6c6e0a1a",
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": []
+        }
+      ]
+    }
+  ],
+  "exported_tags": []
+}

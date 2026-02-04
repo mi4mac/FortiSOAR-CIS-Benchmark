@@ -1,0 +1,2 @@
+name,vendor,version,tool_type,configuration,is_active,notes
+CIS-CAT Pro Assessor,CIS,4.0.12,Scanner,"{\"profile\":\"Level 1\",\"mode\":\"offline\"}",true,Default CIS-CAT configuration

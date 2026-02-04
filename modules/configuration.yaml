@@ -1,0 +1,51 @@
+module:
+  name: Configuration
+  plural: Configurations
+  type_suggestion: configuration
+  trackable: true
+  taggable: true
+  indexable: true
+  queueable: false
+  team_ownable: false
+  display_template: "{{device_name}} - {{config_version}}"
+fields:
+  - title: Assessment Run
+    api_key: assessment_run
+    type: many_to_one
+    related_module: Compliance Assessment Run
+    reverse_field_title: Configurations
+    reverse_field_key: configurations
+  - title: Device ID
+    api_key: device_id
+    type: many_to_one
+    related_module: Assets
+    reverse_field_title: Configurations
+    reverse_field_key: configurations
+  - title: Device Name
+    api_key: device_name
+    type: text
+    required: true
+  - title: Device Type
+    api_key: device_type
+    type: picklist
+    picklist: "Device Type"
+  - title: Config Version
+    api_key: config_version
+    type: text
+  - title: Retrieved At
+    api_key: retrieved_at
+    type: datetime
+  - title: Raw Config
+    api_key: raw_config
+    type: file
+  - title: Config Hash
+    api_key: config_hash
+    type: text
+  - title: Status
+    api_key: status
+    type: picklist
+    picklist: "Config Status"
+  - title: Error Message
+    api_key: error_message
+    type: textarea
+

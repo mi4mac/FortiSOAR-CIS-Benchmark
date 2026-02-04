@@ -1,0 +1,50 @@
+module:
+  name: Compliance Requirement
+  plural: Compliance Requirements
+  type_suggestion: compliance_requirement
+  trackable: true
+  taggable: true
+  indexable: true
+  queueable: false
+  team_ownable: false
+  display_template: "{{framework}} {{control_id}} - {{title}}"
+fields:
+  - title: Name
+    api_key: name
+    type: text
+    required: true
+    unique: true
+  - title: Framework
+    api_key: framework
+    type: picklist
+    picklist: "Compliance Framework"
+  - title: Control ID
+    api_key: control_id
+    type: text
+  - title: Title
+    api_key: title
+    type: text
+  - title: Category
+    api_key: category
+    type: text
+  - title: Version
+    api_key: version
+    type: text
+  - title: Reference URL
+    api_key: reference_url
+    type: url
+  - title: Description
+    api_key: description
+    type: textarea
+  - title: Notes
+    api_key: notes
+    type: textarea
+relationships:
+  - title: CIS Rules
+    api_key: cis_rules
+    type: many_to_many
+    related_module: CIS Rule
+    reverse_field_title: Compliance Requirements
+    reverse_field_key: compliance_requirements
+    note: Required reverse field on CIS Rule.
+
