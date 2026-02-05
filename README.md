@@ -42,6 +42,7 @@ Data and templates
 - `data/sample_configurations.csv` - sample configuration records
 - `data/sample_scan_tools.csv` - sample scan tool records
 - `playbook_cis_rules_ingest_legacy.json` - legacy CIS Rule CSV ingestion playbook
+- `playbook_fortigate_cis_evaluate.json` - FortiGate config evaluation playbook
 
 How to implement in FortiSOAR 7.6.5 (manual setup)
 1. Create picklists from `picklists/cis_picklists.yaml`.
@@ -74,6 +75,8 @@ Notes
   `cis_palo_alto_firewall_11_v1.2.0_rules.csv`) use the older
   `CIS Rule` schema and should be ingested with
   `playbook_cis_rules_ingest_legacy.json`.
+- Use `playbook_fortigate_cis_evaluate.json` to evaluate FortiGate running
+  configs against CIS Benchmark Rules and create findings/results.
 - `playbook_cis_rules_ingest.json` includes step type UUIDs. Replace them if
   your instance uses different UUIDs:
   - Manual Trigger step type UUID (required for the upload popup)

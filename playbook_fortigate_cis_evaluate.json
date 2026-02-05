@@ -1,0 +1,199 @@
+{
+  "type": "workflow_collections",
+  "data": [
+    {
+      "@context": "/api/3/contexts/WorkflowCollection",
+      "@type": "WorkflowCollection",
+      "name": "CIS Compliance",
+      "description": "Playbooks for CIS compliance data ingestion.",
+      "visible": true,
+      "image": null,
+      "uuid": "f21d72c7-3d95-4bb8-8b42-1a2f1e0c1b01",
+      "workflows": [
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Evaluate FortiGate Config (CIS)",
+          "aliasName": null,
+          "tag": null,
+          "description": "Evaluate FortiGate running config against CIS Benchmark Rules.",
+          "isActive": true,
+          "debug": true,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [
+            "config_file",
+            "config_text",
+            "config_url",
+            "fsr_base_url",
+            "fsr_api_key",
+            "benchmark",
+            "device_type",
+            "assessment_run",
+            "configuration",
+            "asset",
+            "code_snippet_config"
+          ],
+          "synchronous": false,
+          "collection": "/api/3/workflow_collections/f21d72c7-3d95-4bb8-8b42-1a2f1e0c1b01",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/2ddf9c9a-2bd1-4c0c-9f5a-7d7ccaa6a1b0",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": "Manual trigger with CSV file upload.",
+              "arguments": {
+                "__triggerLimit": true,
+                "step_variables": {
+                  "input": {
+                    "params": [
+                      {
+                        "name": "csv_file",
+                        "type": "file",
+                        "title": "CIS Rules CSV"
+                      },
+                      {
+                        "name": "csv_url",
+                        "type": "text",
+                        "title": "CIS Rules CSV URL (optional)"
+                      },
+                      {
+                        "name": "csv_text",
+                        "type": "text",
+                        "title": "CIS Rules CSV Text (optional)"
+                      },
+                      {
+                        "name": "code_snippet_config",
+                        "type": "text",
+                        "title": "Code Snippet Config UUID"
+                      },
+                      {
+                        "name": "fsr_base_url",
+                        "type": "text",
+                        "title": "FortiSOAR Base URL (optional)"
+                      },
+                      {
+                        "name": "fsr_api_key",
+                        "type": "text",
+                        "title": "FortiSOAR API Key (optional)"
+                      }
+                    ]
+                  }
+                },
+                "triggerOnSource": true,
+                "triggerOnReplicate": false,
+                "noRecordExecution": true,
+                "singleRecordExecution": false,
+                "resources": [
+                  "cis_benchmark_rule"
+                ]
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "2ddf9c9a-2bd1-4c0c-9f5a-7d7ccaa6a1b0"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Read Config File",
+              "description": "Read config contents from uploaded file.",
+              "arguments": {
+                "step_variables": [],
+                "file_contents": "{{ vars.input.config_file }}"
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+              "group": null,
+              "uuid": "7d2f2f3f-4d6a-4a56-9f70-4f5f6b0a1e3b"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Evaluate CIS Rules",
+              "description": "Fetch CIS rules and evaluate against config.",
+              "arguments": {
+                "step_variables": [],
+                "config": "{{ vars.input.code_snippet_config }}",
+                "params": {
+                  "python_function": "import json\nimport re\nimport urllib.request\nimport urllib.parse\nfrom datetime import datetime\n\n\ndef get_path(payload, path):\n    cur = payload\n    for key in path:\n        if isinstance(key, int):\n            if not isinstance(cur, list) or key >= len(cur):\n                return None\n            cur = cur[key]\n        else:\n            if not isinstance(cur, dict) or key not in cur:\n                return None\n            cur = cur[key]\n    return cur\n\n\nfsr_base_url = \"{{ vars.input.fsr_base_url | default('https://localhost') }}\".rstrip('/')\nfsr_api_key = \"{{ vars.input.fsr_api_key | default('') }}\"\nbenchmark_input = \"{{ vars.input.benchmark | default('') }}\"\ndevice_type = \"{{ vars.input.device_type | default('FortiGate') }}\"\nassessment_run = \"{{ vars.input.assessment_run | default('') }}\"\nconfiguration = \"{{ vars.input.configuration | default('') }}\"\nasset = \"{{ vars.input.asset | default('') }}\"\n\nfile_text = \"\"\"{{ vars.steps.Read_Config_File.file_contents | default('') }}\"\"\"\nfsr_file_text = \"\"\"{{ fsr_steps_result.Read_Config_File.file_contents | default('') }}\"\"\"\n\nconfig_text_candidates = [\n    \"\"\"{{ vars.input.config_text | default('') }}\"\"\",\n    \"\"\"{{ vars.input.data.config_text | default('') }}\"\"\",\n    \"\"\"{{ vars.request.data.config_text | default('') }}\"\"\",\n    \"\"\"{{ vars.request.data.input.config_text | default('') }}\"\"\",\n    \"\"\"{{ vars.request.data.params.config_text | default('') }}\"\"\",\n    \"\"\"{{ vars.request.data.records[0].config_text | default('') }}\"\"\",\n    \"\"\"{{ vars.input.records[0].config_text | default('') }}\"\"\"\n]\n\nconfig_url_candidates = [\n    \"{{ vars.input.config_url | default('') }}\",\n    \"{{ vars.input.data.config_url | default('') }}\",\n    \"{{ vars.request.data.config_url | default('') }}\",\n    \"{{ vars.request.data.input.config_url | default('') }}\",\n    \"{{ vars.request.data.params.config_url | default('') }}\",\n    \"{{ vars.request.data.records[0].config_url | default('') }}\",\n    \"{{ vars.input.records[0].config_url | default('') }}\"\n]\n\nconfig_text = \"\"\nfor candidate in config_text_candidates:\n    if candidate and candidate.strip():\n        config_text = candidate\n        break\n\nif not config_text:\n    config_url = \"\"\n    for candidate in config_url_candidates:\n        if candidate and str(candidate).strip():\n            config_url = str(candidate).strip()\n            break\n    if config_url:\n        with urllib.request.urlopen(config_url) as response:\n            config_bytes = response.read()\n        config_text = config_bytes.decode(\"utf-8\", errors=\"replace\")\n\nif not config_text and file_text and file_text.strip():\n    config_text = file_text\nif not config_text and fsr_file_text and fsr_file_text.strip():\n    config_text = fsr_file_text\n\nif not config_text:\n    raise Exception(\"No config provided. Use config_file upload, config_url, or config_text.\")\n\n\ndef resolve_benchmark_iri(name):\n    if not name or not isinstance(name, str):\n        return None\n    if name.startswith('/api/3/'):\n        return name\n    if not fsr_api_key:\n        return None\n    try:\n        req = urllib.request.Request(\n            f\"{fsr_base_url}/api/3/cis_benchmark?search={urllib.parse.quote(name)}&$limit=1\",\n            headers={\"Authorization\": f\"API-KEY {fsr_api_key}\", \"Accept\": \"application/json\"}\n        )\n        with urllib.request.urlopen(req) as response:\n            data = json.load(response)\n        items = data.get('data') or data.get('hydra:member') or []\n        if items:\n            return items[0].get('@id') or items[0].get('id') or items[0].get('uuid')\n    except Exception:\n        return None\n    return None\n\n\ndef fetch_rules(benchmark_iri):\n    if not fsr_api_key:\n        raise Exception(\"fsr_api_key is required to fetch CIS rules.\")\n    rules = []\n    offset = 0\n    while True:\n        url = f\"{fsr_base_url}/api/3/cis_benchmark_rule?$limit=200&$offset={offset}\"\n        req = urllib.request.Request(\n            url,\n            headers={\"Authorization\": f\"API-KEY {fsr_api_key}\", \"Accept\": \"application/json\"}\n        )\n        with urllib.request.urlopen(req) as response:\n            data = json.load(response)\n        items = data.get('data') or data.get('hydra:member') or []\n        if not items:\n            break\n        rules.extend(items)\n        if len(items) < 200:\n            break\n        offset += 200\n    filtered = []\n    for rule in rules:\n        if benchmark_iri and rule.get('benchmark') != benchmark_iri:\n            continue\n        if device_type and rule.get('device_type') != device_type:\n            continue\n        if rule.get('is_active') is False:\n            continue\n        filtered.append(rule)\n    return filtered\n\n\ndef eval_rule(rule, config_text):\n    logic = rule.get('validation_logic') or {}\n    if isinstance(logic, str):\n        try:\n            logic = json.loads(logic)\n        except Exception:\n            logic = {}\n    if isinstance(logic, dict) and logic.get('type') == 'regex':\n        pattern = logic.get('pattern') or ''\n        flags = logic.get('flags') or ''\n        re_flags = re.IGNORECASE if 'i' in flags.lower() else 0\n        match = re.search(pattern, config_text, re_flags)\n        return (bool(match), f\"regex:{pattern}\")\n    expected = logic.get('value') if isinstance(logic, dict) else None\n    if expected:\n        return (expected in config_text, f\"contains:{expected}\")\n    return (False, \"no_validation_logic\")\n\n\nbenchmark_iri = resolve_benchmark_iri(benchmark_input) if benchmark_input else None\nrules = fetch_rules(benchmark_iri)\n\nfindings = []\nresults = []\nerrors = []\n\nnow = datetime.utcnow().strftime('%Y%m%d%H%M%S')\n\nfor rule in rules:\n    passed, evidence = eval_rule(rule, config_text)\n    status = 'PASS' if passed else 'FAIL'\n    compliance_status = 'Compliant' if passed else 'Non-Compliant'\n    rule_id = rule.get('rule_id') or rule.get('id') or 'unknown'\n    finding_id = f\"{rule_id}-{now}\"\n    result_name = f\"{rule_id}-{now}\"\n\n    finding = {\n        \"finding_id\": finding_id,\n        \"status\": status,\n        \"severity\": rule.get('severity'),\n        \"comments\": evidence,\n        \"cis_benchmark_rule\": rule.get('@id') or rule.get('id')\n    }\n    if assessment_run:\n        finding[\"assessment_run\"] = assessment_run\n    if configuration:\n        finding[\"configuration\"] = configuration\n    findings.append(finding)\n\n    result = {\n        \"name\": result_name,\n        \"status\": compliance_status,\n        \"check_method\": \"Automated\",\n        \"cis_benchmark_rule\": rule.get('@id') or rule.get('id')\n    }\n    if benchmark_iri:\n        result[\"cis_benchmark\"] = benchmark_iri\n    if asset:\n        result[\"asset\"] = asset\n    results.append(result)\n\ncreated_findings = 0\ncreated_results = 0\nif fsr_api_key:\n    headers = {\n        \"Authorization\": f\"API-KEY {fsr_api_key}\",\n        \"Accept\": \"application/json\",\n        \"Content-Type\": \"application/json\"\n    }\n    for item in findings:\n        try:\n            req = urllib.request.Request(\n                f\"{fsr_base_url}/api/3/compliance_finding\",\n                data=json.dumps(item).encode('utf-8'),\n                headers=headers\n            )\n            with urllib.request.urlopen(req) as response:\n                response.read()\n            created_findings += 1\n        except Exception as exc:\n            errors.append({\"finding_id\": item.get('finding_id'), \"error\": str(exc)})\n    for item in results:\n        try:\n            req = urllib.request.Request(\n                f\"{fsr_base_url}/api/3/cis_compliance_result\",\n                data=json.dumps(item).encode('utf-8'),\n                headers=headers\n            )\n            with urllib.request.urlopen(req) as response:\n                response.read()\n            created_results += 1\n        except Exception as exc:\n            errors.append({\"result\": item.get('name'), \"error\": str(exc)})\n\nprint(json.dumps({\n    \"rules_checked\": len(rules),\n    \"findings_created\": created_findings,\n    \"results_created\": created_results,\n    \"errors\": errors\n}))\n"
+                },
+                "version": "2.1.4",
+                "connector": "code-snippet",
+                "operation": "python_inline_code_editor",
+                "operationTitle": "Execute Python Code"
+              },
+              "status": null,
+              "top": "300",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/1fdd14cc-d6b4-4335-a3af-ab49c8ed2fd8",
+              "group": null,
+              "uuid": "5d4f6c6a-4b73-4f1b-9c23-7a1a7f0d6c2b"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Done",
+              "description": "Set playbook result and end workflow.",
+              "arguments": {
+                "step_variables": [],
+                "result": "{% set parsed = vars.steps.Evaluate_CIS_Rules.data[\"code_output\"] %}{\"rules_checked\": {{ parsed.rules_checked }}, \"findings_created\": {{ parsed.findings_created }}, \"results_created\": {{ parsed.results_created }}, \"errors\": {{ parsed.errors | toJSON }} }"
+              },
+              "status": null,
+              "top": "570",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/9dcc4bf5-b6cf-4a5c-b545-1fac3b9e33e6",
+              "group": null,
+              "uuid": "1c8a3f7b-8f6a-45a7-bf71-7f5c2b0f9a3c"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Read Config File",
+              "targetStep": "7d2f2f3f-4d6a-4a56-9f70-4f5f6b0a1e3b",
+              "sourceStep": "2ddf9c9a-2bd1-4c0c-9f5a-7d7ccaa6a1b0",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "a1111111-1111-1111-1111-111111111111"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Read Config File -> Evaluate CIS Rules",
+              "targetStep": "5d4f6c6a-4b73-4f1b-9c23-7a1a7f0d6c2b",
+              "sourceStep": "7d2f2f3f-4d6a-4a56-9f70-4f5f6b0a1e3b",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "b2222222-2222-2222-2222-222222222222"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Evaluate CIS Rules -> Done",
+              "targetStep": "1c8a3f7b-8f6a-45a7-bf71-7f5c2b0f9a3c",
+              "sourceStep": "5d4f6c6a-4b73-4f1b-9c23-7a1a7f0d6c2b",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "c3333333-3333-3333-3333-333333333333"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
+          "uuid": "a17f0f7d-0f3d-4f5b-9c62-1b5b6c6e0a1a",
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": []
+        }
+      ]
+    }
+  ],
+  "exported_tags": []
+}
