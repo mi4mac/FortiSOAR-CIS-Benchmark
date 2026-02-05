@@ -7,7 +7,7 @@ module:
   indexable: true
   queueable: true
   team_ownable: true
-  display_template: "{{cis_rule}} - {{status}}"
+  display_template: "{{cis_benchmark_rule}} - {{status}}"
 fields:
   - title: Name
     api_key: name
@@ -35,13 +35,13 @@ fields:
     api_key: notes
     type: textarea
 relationships:
-  - title: CIS Rule
-    api_key: cis_rule
+  - title: CIS Benchmark Rule
+    api_key: cis_benchmark_rule
     type: many_to_one
-    related_module: CIS Rule
+    related_module: CIS Benchmark Rule
     reverse_field_title: Compliance Results
     reverse_field_key: compliance_results
-    note: Add reverse field on CIS Rule if needed.
+    note: Add reverse field on CIS Benchmark Rule if needed.
   - title: CIS Benchmark
     api_key: cis_benchmark
     type: many_to_one

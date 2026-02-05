@@ -6,11 +6,6 @@ picklists:
       - High
       - Medium
       - Low
-  "CIS Benchmark Level":
-    description: CIS benchmark level
-    items:
-      - Level 1
-      - Level 2
   "CIS Profile":
     description: CIS benchmark profile
     items:
