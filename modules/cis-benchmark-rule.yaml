@@ -63,4 +63,18 @@ fields:
   - title: Impact
     api_key: impact
     type: textarea
+  - title: Compliance Findings
+    api_key: compliance_findings
+    type: one_to_many
+    related_module: Compliance Finding
+    reverse_field_title: CIS Rule
+    reverse_field_key: cis_rule
+    note: Reverse field for compliance findings linked to the rule.
+  - title: Compliance Results
+    api_key: compliance_results
+    type: one_to_many
+    related_module: CIS Compliance Result
+    reverse_field_title: CIS Benchmark Rule
+    reverse_field_key: cis_benchmark_rule
+    note: Reverse field for compliance results linked to the rule.
 

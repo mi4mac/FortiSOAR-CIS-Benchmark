@@ -45,11 +45,11 @@ fields:
     api_key: notes
     type: textarea
 relationships:
-  - title: CIS Rules
-    api_key: cis_rules
+  - title: CIS Benchmark Rules
+    api_key: cis_benchmark_rules
     type: one_to_many
-    related_module: CIS Rule
+    related_module: CIS Benchmark Rule
     reverse_field_title: Benchmark
     reverse_field_key: benchmark
-    note: Required reverse field on CIS Rule.
+    note: Required reverse field on CIS Benchmark Rule.
 
