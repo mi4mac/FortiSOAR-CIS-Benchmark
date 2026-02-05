@@ -1,5 +1,10 @@
 FortiSOAR 7.6.5 CIS Modules Blueprint
 
+Note: This repository provides a source blueprint (YAML + CSV + playbooks). The
+solution pack ZIP included here is not a FortiSOAR-generated export, so it is
+intended for manual setup and import guidance rather than direct one-click
+installation.
+
 This project provides a ready-to-implement data model for storing CIS
 benchmarks, rules, configurations, and compliance results in FortiSOAR 7.6.5.
 The files are structured as a blueprint you can recreate in the Module Editor
@@ -38,7 +43,7 @@ Data and templates
 - `data/sample_scan_tools.csv` - sample scan tool records
 - `playbook_cis_rules_ingest_legacy.json` - legacy CIS Rule CSV ingestion playbook
 
-How to implement in FortiSOAR 7.6.5
+How to implement in FortiSOAR 7.6.5 (manual setup)
 1. Create picklists from `picklists/cis_picklists.yaml`.
 2. Create modules in this order:
    - CIS Benchmarks
@@ -55,6 +60,9 @@ How to implement in FortiSOAR 7.6.5
 6. Import data as needed for your workflow.
 
 Notes
+- The bundled ZIP in `dist/` is a source pack (documentation + playbooks +
+  sample data). It is not a FortiSOAR export and should be used alongside the
+  steps above to create modules and picklists manually.
 - Module "Type" values are suggested; FortiSOAR generates these automatically.
 - Relationship fields require reverse fields on related modules to publish.
 - If you already use a different `Assets`, `People`, or `Tasks` schema, update
