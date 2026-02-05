@@ -45,3 +45,17 @@ fields:
   - title: Notes
     api_key: notes
     type: textarea
+  - title: Compliance Findings
+    api_key: compliance_findings
+    type: one_to_many
+    related_module: Compliance Finding
+    reverse_field_title: Assessment Run
+    reverse_field_key: assessment_run
+    note: Reverse field for findings linked to the run.
+  - title: Configurations
+    api_key: configurations
+    type: one_to_many
+    related_module: Configuration
+    reverse_field_title: Assessment Run
+    reverse_field_key: assessment_run
+    note: Reverse field for configurations linked to the run.

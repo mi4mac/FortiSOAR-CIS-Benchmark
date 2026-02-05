@@ -36,6 +36,7 @@ Data and templates
 - `data/sample_compliance_assessment_runs.csv` - sample assessment runs
 - `data/sample_configurations.csv` - sample configuration records
 - `data/sample_scan_tools.csv` - sample scan tool records
+- `playbook_cis_rules_ingest_legacy.json` - legacy CIS Rule CSV ingestion playbook
 
 How to implement in FortiSOAR 7.6.5
 1. Create picklists from `picklists/cis_picklists.yaml`.
@@ -60,6 +61,11 @@ Notes
   relationship targets accordingly.
 - The `cis_rules_combined.csv` file is the simplest bulk import for
   `CIS Benchmark Rule`.
+- Legacy CSVs (`cis_docker_community_edition_v1.1.0_rules.csv`,
+  `cis_palo_alto_firewall_10_v1.3.0_rules.csv`,
+  `cis_palo_alto_firewall_11_v1.2.0_rules.csv`) use the older
+  `CIS Rule` schema and should be ingested with
+  `playbook_cis_rules_ingest_legacy.json`.
 - `playbook_cis_rules_ingest.json` includes step type UUIDs. Replace them if
   your instance uses different UUIDs:
   - Manual Trigger step type UUID (required for the upload popup)

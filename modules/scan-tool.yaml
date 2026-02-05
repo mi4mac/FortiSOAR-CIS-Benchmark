@@ -32,3 +32,10 @@ fields:
   - title: Notes
     api_key: notes
     type: textarea
+  - title: Assessment Runs
+    api_key: assessment_runs
+    type: one_to_many
+    related_module: Compliance Assessment Run
+    reverse_field_title: Tool Name
+    reverse_field_key: tool_name
+    note: Reverse field for assessment runs linked to the scan tool.

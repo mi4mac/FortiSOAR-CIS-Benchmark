@@ -67,8 +67,8 @@ fields:
     api_key: compliance_findings
     type: one_to_many
     related_module: Compliance Finding
-    reverse_field_title: CIS Rule
-    reverse_field_key: cis_rule
+    reverse_field_title: CIS Benchmark Rule
+    reverse_field_key: cis_benchmark_rule
     note: Reverse field for compliance findings linked to the rule.
   - title: Compliance Results
     api_key: compliance_results
@@ -77,4 +77,11 @@ fields:
     reverse_field_title: CIS Benchmark Rule
     reverse_field_key: cis_benchmark_rule
     note: Reverse field for compliance results linked to the rule.
+  - title: Compliance Requirements
+    api_key: compliance_requirements
+    type: many_to_many
+    related_module: Compliance Requirement
+    reverse_field_title: CIS Benchmark Rules
+    reverse_field_key: cis_benchmark_rules
+    note: Reverse field for compliance requirements linked to the rule.
 

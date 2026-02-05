@@ -52,4 +52,18 @@ relationships:
     reverse_field_title: Benchmark
     reverse_field_key: benchmark
     note: Required reverse field on CIS Benchmark Rule.
+  - title: CIS Rules
+    api_key: cis_rules
+    type: one_to_many
+    related_module: CIS Rule
+    reverse_field_title: Benchmark
+    reverse_field_key: benchmark
+    note: Required reverse field on CIS Rule (legacy module).
+  - title: Compliance Results
+    api_key: compliance_results
+    type: one_to_many
+    related_module: CIS Compliance Result
+    reverse_field_title: CIS Benchmark
+    reverse_field_key: cis_benchmark
+    note: Reverse field for compliance results linked to the benchmark.
 

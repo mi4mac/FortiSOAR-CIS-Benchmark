@@ -40,11 +40,18 @@ fields:
     api_key: notes
     type: textarea
 relationships:
+  - title: CIS Benchmark Rules
+    api_key: cis_benchmark_rules
+    type: many_to_many
+    related_module: CIS Benchmark Rule
+    reverse_field_title: Compliance Requirements
+    reverse_field_key: compliance_requirements
+    note: Required reverse field on CIS Benchmark Rule.
   - title: CIS Rules
     api_key: cis_rules
     type: many_to_many
     related_module: CIS Rule
     reverse_field_title: Compliance Requirements
     reverse_field_key: compliance_requirements
-    note: Required reverse field on CIS Rule.
+    note: Required reverse field on CIS Rule (legacy module).
 
