@@ -91,6 +91,10 @@ Notes
   - `csv_text` (paste CSV text in the trigger input JSON)
   - `csv_url` (GitHub raw URL or any reachable URL)
   - `csv_file` (file upload, if your instance shows the upload popup)
+  If you pass a `benchmark` value as a name, the playbook can resolve it to a
+  CIS Benchmark IRI using the FortiSOAR API. Provide:
+  - `fsr_base_url` (example: `https://192.168.222.218`)
+  - `fsr_api_key` (API key with read access to CIS Benchmark)
   If your UI only shows the "Trigger Playbook With Sample Data" dialog, you
   can still paste JSON there without selecting a record; the playbook now
   declares `csv_url`, `csv_text`, and `code_snippet_config` as parameters and
