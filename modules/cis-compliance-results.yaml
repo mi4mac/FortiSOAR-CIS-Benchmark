@@ -17,11 +17,11 @@ fields:
   - title: Status
     api_key: status
     type: picklist
-    picklist: compliance_status
+    picklist: "Compliance Status"
   - title: Check Method
     api_key: check_method
     type: picklist
-    picklist: check_method
+    picklist: "Check Method"
   - title: Checked On
     api_key: checked_on
     type: datetime
