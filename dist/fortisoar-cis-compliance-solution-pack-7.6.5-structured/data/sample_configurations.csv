@@ -1,2 +1,0 @@
-assessment_run,device_id,device_name,device_type,config_version,retrieved_at,raw_config,config_hash,status,error_message
-CRUN-2026-01-01,FW-01,FortiGate FW-01,FortiGate,v7.4.5,2026-01-01T11:05:00Z,,a1b2c3d4e5f6,SUCCESS,

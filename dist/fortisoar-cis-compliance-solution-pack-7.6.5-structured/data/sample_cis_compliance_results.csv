@@ -1,4 +1,0 @@
-name,status,check_method,checked_on,evidence,score,notes,cis_rule,cis_benchmark,asset,checked_by,related_incident
-WIN11-WS-001-1.1.5,Compliant,Automated,2026-01-15T10:00:00Z,Policy setting verified,1.0,Validated via GPO audit,1.1.5 - Password complexity enabled,CIS Microsoft Windows 11 Benchmark,Asset-WS-001,Analyst One,
-WIN11-WS-001-1.2.3,Non-Compliant,Automated,2026-01-15T10:00:00Z,Lockout duration < 15 minutes,0.0,Remediation required,1.2.3 - Account lockout duration,CIS Microsoft Windows 11 Benchmark,Asset-WS-001,Analyst One,
-

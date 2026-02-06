@@ -1,2 +1,0 @@
-run_id,scope,status,started_at,completed_at,initiated_by,notes
-CRUN-2026-01-01,"FortiGate FW-01, Docker Host-01",SUCCESS,2026-01-01T11:00:00Z,2026-01-01T11:30:00Z,Analyst One,Monthly compliance scan

@@ -1,4 +1,0 @@
-name,framework,control_id,title,category,version,reference_url,description,notes
-NIST-800-53 IA-5(1),NIST 800-53,IA-5(1),Authenticator Management,Access Control,Rev.5,https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final,Password complexity and management requirements,Map to CIS password complexity rules
-ISO-27001 A.9.4.3,ISO 27001,A.9.4.3,Password Management System,Access Control,2013,https://www.iso.org/standard/54534.html,Secure password management requirements,Map to CIS account lockout rules
-
