@@ -1,0 +1,107 @@
+{
+  "name": "cisCompliance",
+  "version": "1.0.0",
+  "fsrMinCompatibility": "7.6.5",
+  "type": "solutionpack",
+  "local": true,
+  "label": "CIS Compliance",
+  "dependencies": [],
+  "prerequisite": null,
+  "publisher": "Custom",
+  "certified": "false",
+  "description": "CIS compliance data model, playbooks, and sample data (structured pack).",
+  "help": "docs/README.md",
+  "category": [
+    "Compliance"
+  ],
+  "supportInfo": "Internal",
+  "iconLarge": null,
+  "postInstallConfig": null,
+  "date": "2026-02-06T00:00:00+00:00",
+  "contents": {
+    "picklists": {
+      "cis_picklists": {
+        "name": "CIS Picklists",
+        "file": "picklists/cis_picklists.yaml"
+      }
+    },
+    "modules": {
+      "cis_benchmark": {
+        "name": "CIS Benchmark",
+        "apiName": "cis_benchmark"
+      },
+      "cis_benchmark_rule": {
+        "name": "CIS Benchmark Rule",
+        "apiName": "cis_benchmark_rule"
+      },
+      "cis_rule": {
+        "name": "CIS Rule",
+        "apiName": "cis_rule"
+      },
+      "cis_compliance_result": {
+        "name": "CIS Compliance Result",
+        "apiName": "cis_compliance_result"
+      },
+      "compliance_assessment_run": {
+        "name": "Compliance Assessment Run",
+        "apiName": "compliance_assessment_run"
+      },
+      "compliance_requirement": {
+        "name": "Compliance Requirement",
+        "apiName": "compliance_requirement"
+      },
+      "compliance_finding": {
+        "name": "Compliance Finding",
+        "apiName": "compliance_finding"
+      },
+      "compliance_report": {
+        "name": "Compliance Report",
+        "apiName": "compliance_report"
+      },
+      "configuration": {
+        "name": "Configuration",
+        "apiName": "configuration"
+      }
+    },
+    "playbooks": {
+      "playbook_cis_rules_ingest": {
+        "name": "Ingest CIS Benchmark Rules (CSV)",
+        "file": "playbooks/playbook_cis_rules_ingest.json"
+      },
+      "playbook_cis_rules_ingest_legacy": {
+        "name": "Ingest CIS Rules (Legacy CSV)",
+        "file": "playbooks/playbook_cis_rules_ingest_legacy.json"
+      },
+      "playbook_fortigate_cis_evaluate": {
+        "name": "Evaluate FortiGate Config (CIS)",
+        "file": "playbooks/playbook_fortigate_cis_evaluate.json"
+      }
+    },
+    "views": {
+      "navigation": [
+        "Dashboard",
+        "Queue & Shift Management",
+        "Incident Response",
+        "Automation",
+        "Resources",
+        "Reports",
+        "Widget Library",
+        "Content Hub",
+        "Vulnerability Management",
+        "OT Vulnerability Management",
+        "Threat Intel Management",
+        "Outbreak Management",
+        "Simulations",
+        "Annoye SomeOne",
+        "CIS Benchmark",
+        "Help",
+        "User Community"
+      ]
+    },
+    "roles": [
+      {
+        "name": "Full App Permissions"
+      }
+    ]
+  }
+}

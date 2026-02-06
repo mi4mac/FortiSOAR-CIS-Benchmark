@@ -1,0 +1,6 @@
+name,benchmark_id,version,product,platform,profile,published_date,source_url,description
+CIS FortiGate 7.4.x Benchmark,CIS-FORTIGATE-7.4.x,1.0.1,FortiGate,FortiOS 7.4.x,Network,2026-01-07,,CIS FortiGate 7.4.x Benchmark v1.0.1 (01-07-2026)
+CIS Docker Community Edition Benchmark,DOCKER_COMMUNITY_EDITION_V1.1.0,1.1.0,Docker Community Edition,,,2017-07-06,,CIS Docker Community Edition Benchmark v1.1.0 (07-06-2017)
+CIS Palo Alto Firewall 10 Benchmark,PALO_ALTO_FIREWALL_10_V1.3.0,1.3.0,Palo Alto Firewall 10,,,2025-10-01,,CIS Palo Alto Firewall 10 Benchmark v1.3.0 (10-01-2025)
+CIS Palo Alto Firewall 11 Benchmark,PALO_ALTO_FIREWALL_11_V1.2.0,1.2.0,Palo Alto Firewall 11,,,2025-10-03,,CIS Palo Alto Firewall 11 Benchmark v1.2.0 (10-03-2025)
+

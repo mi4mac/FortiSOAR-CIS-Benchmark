@@ -1,0 +1,68 @@
+picklists:
+  "CIS Severity":
+    description: CIS rule severity
+    items:
+      - Critical
+      - High
+      - Medium
+      - Low
+  "CIS Profile":
+    description: CIS benchmark profile
+    items:
+      - Workstation
+      - Server
+      - Network
+      - Cloud
+  "Compliance Framework":
+    description: External compliance framework
+    items:
+      - CIS
+      - NIST 800-53
+      - ISO 27001
+      - PCI-DSS
+      - HIPAA
+      - SOC 2
+      - GDPR
+      - CMMC
+  "Compliance Status":
+    description: Compliance evaluation status
+    items:
+      - Compliant
+      - Non-Compliant
+      - Not Applicable
+      - Not Evaluated
+      - Error
+  "Config Status":
+    description: Configuration retrieval status
+    items:
+      - SUCCESS
+      - FAILED
+      - PENDING
+  "Device Type":
+    description: Device platform type
+    items:
+      - FortiGate
+      - Cisco IOS
+      - Juniper
+      - Palo Alto
+      - Docker
+  "CIS Level":
+    description: CIS Level
+    items:
+      - L1
+      - L2
+      - Level 1
+      - Level 2
+  "Finding Status":
+    description: Compliance finding status
+    items:
+      - PASS
+      - FAIL
+      - WARNING
+  "Check Method":
+    description: Method used to evaluate compliance
+    items:
+      - Automated
+      - Manual
+      - Hybrid
+

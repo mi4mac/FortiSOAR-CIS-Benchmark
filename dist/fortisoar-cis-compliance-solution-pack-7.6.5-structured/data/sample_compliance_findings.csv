@@ -1,0 +1,3 @@
+finding_id,assessment_run,configuration,cis_rule,actual_value,expected_value,status,severity,evidence,created_date,remediation_task,comments
+FIND-0001,CRUN-2026-01-01,CFG-0001,CIS-FG-7.4-2.1.10,"admin-https-ssl-versions tlsv1-2","tlsv1-3",FAIL,High,,2026-01-01T12:00:00Z,,TLS version below recommended
+FIND-0002,CRUN-2026-01-01,CFG-0001,CIS-DOCKER-1.1,"/var/lib/docker on /","/var/lib/docker on separate partition",WARNING,Low,,2026-01-01T12:05:00Z,,Partition not separate

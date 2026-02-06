@@ -1,0 +1,64 @@
+module:
+  name: Compliance Finding
+  plural: Compliance Findings
+  type_suggestion: compliance_finding
+  trackable: true
+  taggable: true
+  indexable: true
+  queueable: true
+  team_ownable: true
+  display_template: "{{finding_id}} - {{status}}"
+fields:
+  - title: Finding ID
+    api_key: finding_id
+    type: text
+    required: true
+    unique: true
+  - title: Assessment Run
+    api_key: assessment_run
+    type: many_to_one
+    related_module: Compliance Assessment Run
+    reverse_field_title: Compliance Findings
+    reverse_field_key: compliance_findings
+  - title: Configuration
+    api_key: configuration
+    type: many_to_one
+    related_module: Configuration
+    reverse_field_title: Compliance Findings
+    reverse_field_key: compliance_findings
+  - title: CIS Benchmark Rule
+    api_key: cis_benchmark_rule
+    type: many_to_one
+    related_module: CIS Benchmark Rule
+    reverse_field_title: Compliance Findings
+    reverse_field_key: compliance_findings
+  - title: Actual Value
+    api_key: actual_value
+    type: textarea
+  - title: Expected Value
+    api_key: expected_value
+    type: textarea
+  - title: Status
+    api_key: status
+    type: picklist
+    picklist: "Finding Status"
+  - title: Severity
+    api_key: severity
+    type: picklist
+    picklist: "CIS Severity"
+  - title: Evidence
+    api_key: evidence
+    type: file
+  - title: Created Date
+    api_key: created_date
+    type: datetime
+  - title: Remediation Task
+    api_key: remediation_task
+    type: many_to_one
+    related_module: Tasks
+    reverse_field_title: Compliance Findings
+    reverse_field_key: compliance_findings
+  - title: Comments
+    api_key: comments
+    type: textarea
+
