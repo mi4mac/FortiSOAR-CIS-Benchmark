@@ -37,7 +37,7 @@
           "synchronous": false,
           "collection": "/api/3/workflow_collections/f21d72c7-3d95-4bb8-8b42-1a2f1e0c1b01",
           "versions": [],
-          "triggerStep": "/api/3/workflow_steps/2ddf9c9a-2bd1-4c0c-9f5a-7d7ccaa6a1b0",
+          "triggerStep": "/api/3/workflow_steps/7bb9475c-9a66-4872-8965-c64083f0579c",
           "steps": [
             {
               "@type": "WorkflowStep",
@@ -94,7 +94,7 @@
               "left": "125",
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
               "group": null,
-              "uuid": "2ddf9c9a-2bd1-4c0c-9f5a-7d7ccaa6a1b0"
+              "uuid": "7bb9475c-9a66-4872-8965-c64083f0579c"
             },
             {
               "@type": "WorkflowStep",
@@ -109,7 +109,7 @@
               "left": "125",
               "stepType": "/api/3/workflow_step_types/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
               "group": null,
-              "uuid": "7d2f2f3f-4d6a-4a56-9f70-4f5f6b0a1e3b"
+              "uuid": "b2e3fdf4-317d-4c99-b88e-81c9d5603a43"
             },
             {
               "@type": "WorkflowStep",
@@ -131,7 +131,7 @@
               "left": "125",
               "stepType": "/api/3/workflow_step_types/1fdd14cc-d6b4-4335-a3af-ab49c8ed2fd8",
               "group": null,
-              "uuid": "5d4f6c6a-4b73-4f1b-9c23-7a1a7f0d6c2b"
+              "uuid": "c6e655c5-5025-47e1-a8a8-27390d142dd0"
             },
             {
               "@type": "WorkflowStep",
@@ -146,15 +146,15 @@
               "left": "125",
               "stepType": "/api/3/workflow_step_types/9dcc4bf5-b6cf-4a5c-b545-1fac3b9e33e6",
               "group": null,
-              "uuid": "1c8a3f7b-8f6a-45a7-bf71-7f5c2b0f9a3c"
+              "uuid": "1f164c48-59fe-4dec-bdc2-3c0fcf28faa0"
             }
           ],
           "routes": [
             {
               "@type": "WorkflowRoute",
               "name": "Start -> Read Config File",
-              "targetStep": "7d2f2f3f-4d6a-4a56-9f70-4f5f6b0a1e3b",
-              "sourceStep": "2ddf9c9a-2bd1-4c0c-9f5a-7d7ccaa6a1b0",
+              "targetStep": "b2e3fdf4-317d-4c99-b88e-81c9d5603a43",
+              "sourceStep": "7bb9475c-9a66-4872-8965-c64083f0579c",
               "label": null,
               "isExecuted": false,
               "group": null,
@@ -163,8 +163,8 @@
             {
               "@type": "WorkflowRoute",
               "name": "Read Config File -> Evaluate CIS Rules",
-              "targetStep": "5d4f6c6a-4b73-4f1b-9c23-7a1a7f0d6c2b",
-              "sourceStep": "7d2f2f3f-4d6a-4a56-9f70-4f5f6b0a1e3b",
+              "targetStep": "c6e655c5-5025-47e1-a8a8-27390d142dd0",
+              "sourceStep": "b2e3fdf4-317d-4c99-b88e-81c9d5603a43",
               "label": null,
               "isExecuted": false,
               "group": null,
@@ -173,8 +173,8 @@
             {
               "@type": "WorkflowRoute",
               "name": "Evaluate CIS Rules -> Done",
-              "targetStep": "1c8a3f7b-8f6a-45a7-bf71-7f5c2b0f9a3c",
-              "sourceStep": "5d4f6c6a-4b73-4f1b-9c23-7a1a7f0d6c2b",
+              "targetStep": "1f164c48-59fe-4dec-bdc2-3c0fcf28faa0",
+              "sourceStep": "c6e655c5-5025-47e1-a8a8-27390d142dd0",
               "label": null,
               "isExecuted": false,
               "group": null,
@@ -185,7 +185,7 @@
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
-          "uuid": "a17f0f7d-0f3d-4f5b-9c62-1b5b6c6e0a1a",
+          "uuid": "8068133c-30f4-47d8-920b-6fd215bb15f7",
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
