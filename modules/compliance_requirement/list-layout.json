@@ -1,0 +1,59 @@
+{
+    "@context": "/api/3/contexts/SystemViewTemplate",
+    "@type": "SystemViewTemplate",
+    "type": "rows",
+    "config": {
+        "rows": [
+            {
+                "columns": [
+                    {
+                        "widgets": [
+                            {
+                                "type": "grid",
+                                "config": {
+                                    "wid": "6bb7c109-436c-43e4-9f56-507c61998752",
+                                    "module": "compliance_requirement",
+                                    "columns": [
+                                        "id",
+                                        "name",
+                                        "framework",
+                                        "control_id",
+                                        "title",
+                                        "category",
+                                        "version",
+                                        "reference_url",
+                                        "description",
+                                        "notes",
+                                        "createDate",
+                                        "createUser",
+                                        "recordTags"
+                                    ],
+                                    "expandableCol": [],
+                                    "relationshipField": [],
+                                    "checkboxStatus": true,
+                                    "editableFields": true,
+                                    "actionButtons": [],
+                                    "query": {
+                                        "sort": [],
+                                        "limit": 30,
+                                        "logic": "AND",
+                                        "filters": []
+                                    }
+                                }
+                            }
+                        ],
+                        "style": "col-lg-12"
+                    }
+                ],
+                "wid": "e8822af2-021b-42f3-86c7-450bc3239eed",
+                "_collapsed": false
+            }
+        ],
+        "wid": "b6fa74c7-e1b5-4576-be45-044c7fc91810",
+        "metadata": {
+            "customTemplateTitle": "compliance_requirement",
+            "originalTemplateTitle": "compliance_requirement"
+        }
+    },
+    "uuid": "modules-compliance_requirement-list"
+}

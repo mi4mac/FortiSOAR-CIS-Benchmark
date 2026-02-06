@@ -1,0 +1,19 @@
+{
+    "COMPLIANCE_REQUIREMENT": {
+        "MODULE_DETAILS": {
+            "SINGULAR_NAME": "Compliance Requirement",
+            "PLURAL_NAME": "Compliance Requirements"
+        },
+        "FIELDS": {
+            "NAME": "Name",
+            "FRAMEWORK": "Framework",
+            "CONTROL_ID": "Control ID",
+            "TITLE": "Title",
+            "CATEGORY": "Category",
+            "VERSION": "Version",
+            "REFERENCE_URL": "Reference URL",
+            "DESCRIPTION": "Description",
+            "NOTES": "Notes"
+        }
+    }
+}

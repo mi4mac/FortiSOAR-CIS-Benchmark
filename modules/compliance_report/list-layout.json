@@ -1,0 +1,61 @@
+{
+    "@context": "/api/3/contexts/SystemViewTemplate",
+    "@type": "SystemViewTemplate",
+    "type": "rows",
+    "config": {
+        "rows": [
+            {
+                "columns": [
+                    {
+                        "widgets": [
+                            {
+                                "type": "grid",
+                                "config": {
+                                    "wid": "13cb6da1-a8d7-452e-ad21-2f1c31b3c26d",
+                                    "module": "compliance_report",
+                                    "columns": [
+                                        "id",
+                                        "report_id",
+                                        "report_period",
+                                        "overall_compliance_percent",
+                                        "l1_compliance_percent",
+                                        "l2_compliance_percent",
+                                        "total_devices_scanned",
+                                        "devices_compliant",
+                                        "critical_findings",
+                                        "report_content",
+                                        "generated_by",
+                                        "generated_at",
+                                        "createDate",
+                                        "createUser",
+                                        "recordTags"
+                                    ],
+                                    "expandableCol": [],
+                                    "relationshipField": [],
+                                    "checkboxStatus": true,
+                                    "editableFields": true,
+                                    "actionButtons": [],
+                                    "query": {
+                                        "sort": [],
+                                        "limit": 30,
+                                        "logic": "AND",
+                                        "filters": []
+                                    }
+                                }
+                            }
+                        ],
+                        "style": "col-lg-12"
+                    }
+                ],
+                "wid": "2c1d7ac9-41aa-40de-a4a6-1b20d2d88c5a",
+                "_collapsed": false
+            }
+        ],
+        "wid": "a59c8548-0496-4840-ad04-20a9875d4de8",
+        "metadata": {
+            "customTemplateTitle": "compliance_report",
+            "originalTemplateTitle": "compliance_report"
+        }
+    },
+    "uuid": "modules-compliance_report-list"
+}

@@ -1,0 +1,170 @@
+{
+    "@context": "/api/3/contexts/SystemViewTemplate",
+    "@type": "SystemViewTemplate",
+    "type": "rows",
+    "config": {
+        "rows": [
+            {
+                "columns": [
+                    {
+                        "widgets": [
+                            {
+                                "type": "primaryDetail",
+                                "config": {
+                                    "wid": "52c2e0c1-f980-4110-97ca-bf9892deb67b",
+                                    "idField": "id",
+                                    "picklistFieldReadOnly": false,
+                                    "titleFieldReadOnly": true,
+                                    "featuredRelationship": {
+                                        "field": null,
+                                        "preText": "",
+                                        "query": null,
+                                        "statusField": null,
+                                        "sort": []
+                                    },
+                                    "titleField": "name"
+                                }
+                            },
+                            {
+                                "type": "editableFormGroup",
+                                "config": {
+                                    "wid": "2edbcbac-5eec-4573-8e92-92dab98a10a2",
+                                    "rows": [
+                                        {
+                                            "columns": [
+                                                {
+                                                    "fields": [
+                                                        {
+                                                            "name": "name",
+                                                            "highlightMode": true,
+                                                            "readOnly": false,
+                                                            "linky": true
+                                                        },
+                                                        {
+                                                            "name": "benchmark_id",
+                                                            "highlightMode": true,
+                                                            "readOnly": false,
+                                                            "linky": true
+                                                        },
+                                                        {
+                                                            "name": "version",
+                                                            "highlightMode": true,
+                                                            "readOnly": false,
+                                                            "linky": true
+                                                        },
+                                                        {
+                                                            "name": "product",
+                                                            "highlightMode": true,
+                                                            "readOnly": false,
+                                                            "linky": true
+                                                        },
+                                                        {
+                                                            "name": "platform",
+                                                            "highlightMode": true,
+                                                            "readOnly": false,
+                                                            "linky": true
+                                                        },
+                                                        {
+                                                            "name": "profile",
+                                                            "highlightMode": true,
+                                                            "readOnly": false,
+                                                            "linky": true
+                                                        },
+                                                        {
+                                                            "name": "published_date",
+                                                            "highlightMode": true,
+                                                            "readOnly": false,
+                                                            "linky": true
+                                                        },
+                                                        {
+                                                            "name": "source_url",
+                                                            "highlightMode": true,
+                                                            "readOnly": false,
+                                                            "linky": true
+                                                        },
+                                                        {
+                                                            "name": "description",
+                                                            "highlightMode": true,
+                                                            "readOnly": false,
+                                                            "linky": true
+                                                        },
+                                                        {
+                                                            "name": "notes",
+                                                            "highlightMode": true,
+                                                            "readOnly": false,
+                                                            "linky": true
+                                                        }
+                                                    ],
+                                                    "style": "col-lg-12"
+                                                }
+                                            ],
+                                            "style": ""
+                                        }
+                                    ],
+                                    "title": "Details"
+                                }
+                            }
+                        ],
+                        "style": "col-lg-9"
+                    },
+                    {
+                        "widgets": [
+                            {
+                                "type": "editableFormGroup",
+                                "config": {
+                                    "wid": "b91ceafc-cd15-41a4-9380-65f8f8ae239d",
+                                    "rows": [
+                                        {
+                                            "columns": [
+                                                {
+                                                    "fields": [
+                                                        {
+                                                            "name": "createDate",
+                                                            "highlightMode": true,
+                                                            "readOnly": false,
+                                                            "linky": true
+                                                        },
+                                                        {
+                                                            "name": "modifyDate",
+                                                            "highlightMode": true,
+                                                            "readOnly": false,
+                                                            "linky": true
+                                                        },
+                                                        {
+                                                            "name": "createUser",
+                                                            "highlightMode": true,
+                                                            "readOnly": false,
+                                                            "linky": true
+                                                        },
+                                                        {
+                                                            "name": "modifyUser",
+                                                            "highlightMode": true,
+                                                            "readOnly": false,
+                                                            "linky": true
+                                                        }
+                                                    ],
+                                                    "style": "col-lg-12"
+                                                }
+                                            ],
+                                            "style": "display-inline-block"
+                                        }
+                                    ],
+                                    "title": ""
+                                }
+                            }
+                        ],
+                        "style": "col-lg-3"
+                    }
+                ],
+                "wid": "7695ba8f-b674-45d2-919e-7eebb12a8fac",
+                "_collapsed": false,
+                "collapsible": false,
+                "collapsibleIndex": 0
+            }
+        ],
+        "wid": "84cd80e3-18e0-4649-87b8-3b234e2c0c0f",
+        "actionButtons": [],
+        "metadata": []
+    },
+    "uuid": "modules-cis_benchmark-detail"
+}

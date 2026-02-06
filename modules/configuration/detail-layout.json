@@ -1,0 +1,170 @@
+{
+    "@context": "/api/3/contexts/SystemViewTemplate",
+    "@type": "SystemViewTemplate",
+    "type": "rows",
+    "config": {
+        "rows": [
+            {
+                "columns": [
+                    {
+                        "widgets": [
+                            {
+                                "type": "primaryDetail",
+                                "config": {
+                                    "wid": "cb352dfd-7795-4a76-a541-175b0a247796",
+                                    "idField": "id",
+                                    "picklistFieldReadOnly": false,
+                                    "titleFieldReadOnly": true,
+                                    "featuredRelationship": {
+                                        "field": null,
+                                        "preText": "",
+                                        "query": null,
+                                        "statusField": null,
+                                        "sort": []
+                                    },
+                                    "titleField": "assessment_run"
+                                }
+                            },
+                            {
+                                "type": "editableFormGroup",
+                                "config": {
+                                    "wid": "1a8fcf38-710d-47ed-9f5f-2ed36cf7079f",
+                                    "rows": [
+                                        {
+                                            "columns": [
+                                                {
+                                                    "fields": [
+                                                        {
+                                                            "name": "assessment_run",
+                                                            "highlightMode": true,
+                                                            "readOnly": false,
+                                                            "linky": true
+                                                        },
+                                                        {
+                                                            "name": "device_id",
+                                                            "highlightMode": true,
+                                                            "readOnly": false,
+                                                            "linky": true
+                                                        },
+                                                        {
+                                                            "name": "device_name",
+                                                            "highlightMode": true,
+                                                            "readOnly": false,
+                                                            "linky": true
+                                                        },
+                                                        {
+                                                            "name": "device_type",
+                                                            "highlightMode": true,
+                                                            "readOnly": false,
+                                                            "linky": true
+                                                        },
+                                                        {
+                                                            "name": "config_version",
+                                                            "highlightMode": true,
+                                                            "readOnly": false,
+                                                            "linky": true
+                                                        },
+                                                        {
+                                                            "name": "retrieved_at",
+                                                            "highlightMode": true,
+                                                            "readOnly": false,
+                                                            "linky": true
+                                                        },
+                                                        {
+                                                            "name": "raw_config",
+                                                            "highlightMode": true,
+                                                            "readOnly": false,
+                                                            "linky": true
+                                                        },
+                                                        {
+                                                            "name": "config_hash",
+                                                            "highlightMode": true,
+                                                            "readOnly": false,
+                                                            "linky": true
+                                                        },
+                                                        {
+                                                            "name": "status",
+                                                            "highlightMode": true,
+                                                            "readOnly": false,
+                                                            "linky": true
+                                                        },
+                                                        {
+                                                            "name": "error_message",
+                                                            "highlightMode": true,
+                                                            "readOnly": false,
+                                                            "linky": true
+                                                        }
+                                                    ],
+                                                    "style": "col-lg-12"
+                                                }
+                                            ],
+                                            "style": ""
+                                        }
+                                    ],
+                                    "title": "Details"
+                                }
+                            }
+                        ],
+                        "style": "col-lg-9"
+                    },
+                    {
+                        "widgets": [
+                            {
+                                "type": "editableFormGroup",
+                                "config": {
+                                    "wid": "52d7f5c8-a2e2-4def-a561-fdd35ec17637",
+                                    "rows": [
+                                        {
+                                            "columns": [
+                                                {
+                                                    "fields": [
+                                                        {
+                                                            "name": "createDate",
+                                                            "highlightMode": true,
+                                                            "readOnly": false,
+                                                            "linky": true
+                                                        },
+                                                        {
+                                                            "name": "modifyDate",
+                                                            "highlightMode": true,
+                                                            "readOnly": false,
+                                                            "linky": true
+                                                        },
+                                                        {
+                                                            "name": "createUser",
+                                                            "highlightMode": true,
+                                                            "readOnly": false,
+                                                            "linky": true
+                                                        },
+                                                        {
+                                                            "name": "modifyUser",
+                                                            "highlightMode": true,
+                                                            "readOnly": false,
+                                                            "linky": true
+                                                        }
+                                                    ],
+                                                    "style": "col-lg-12"
+                                                }
+                                            ],
+                                            "style": "display-inline-block"
+                                        }
+                                    ],
+                                    "title": ""
+                                }
+                            }
+                        ],
+                        "style": "col-lg-3"
+                    }
+                ],
+                "wid": "76c9ef6c-17fd-46de-b5e8-730a908a6109",
+                "_collapsed": false,
+                "collapsible": false,
+                "collapsibleIndex": 0
+            }
+        ],
+        "wid": "d630feda-d0db-4abf-bc2c-98460742c360",
+        "actionButtons": [],
+        "metadata": []
+    },
+    "uuid": "modules-configuration-detail"
+}

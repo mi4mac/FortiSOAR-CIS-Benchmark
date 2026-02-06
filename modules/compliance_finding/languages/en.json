@@ -1,0 +1,22 @@
+{
+    "COMPLIANCE_FINDING": {
+        "MODULE_DETAILS": {
+            "SINGULAR_NAME": "Compliance Finding",
+            "PLURAL_NAME": "Compliance Findings"
+        },
+        "FIELDS": {
+            "FINDING_ID": "Finding ID",
+            "ASSESSMENT_RUN": "Assessment Run",
+            "CONFIGURATION": "Configuration",
+            "CIS_RULE": "CIS Rule",
+            "ACTUAL_VALUE": "Actual Value",
+            "EXPECTED_VALUE": "Expected Value",
+            "STATUS": "Status",
+            "SEVERITY": "Severity",
+            "EVIDENCE": "Evidence",
+            "CREATED_DATE": "Created Date",
+            "REMEDIATION_TASK": "Remediation Task",
+            "COMMENTS": "Comments"
+        }
+    }
+}

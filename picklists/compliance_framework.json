@@ -1,0 +1,90 @@
+{
+    "@context": "/api/3/contexts/PicklistName",
+    "@id": "/api/3/picklist_names/2c2eb812-51c5-4a8d-a3af-a8434e222528",
+    "@type": "PicklistName",
+    "name": "Compliance Framework",
+    "system": false,
+    "picklists": [
+        {
+            "@id": "/api/3/picklists/c2e0d952-3d40-446b-a915-6185199970f8",
+            "@type": "Picklist",
+            "itemValue": "CIS",
+            "orderIndex": 0,
+            "color": null,
+            "icon": null,
+            "listName": "/api/3/picklist_names/2c2eb812-51c5-4a8d-a3af-a8434e222528",
+            "uuid": "c2e0d952-3d40-446b-a915-6185199970f8"
+        },
+        {
+            "@id": "/api/3/picklists/ce9bc611-3b3c-4b64-8f95-3fecaeeedf1f",
+            "@type": "Picklist",
+            "itemValue": "NIST 800-53",
+            "orderIndex": 1,
+            "color": null,
+            "icon": null,
+            "listName": "/api/3/picklist_names/2c2eb812-51c5-4a8d-a3af-a8434e222528",
+            "uuid": "ce9bc611-3b3c-4b64-8f95-3fecaeeedf1f"
+        },
+        {
+            "@id": "/api/3/picklists/ada597a0-8b85-4959-880f-a55a0160407f",
+            "@type": "Picklist",
+            "itemValue": "ISO 27001",
+            "orderIndex": 2,
+            "color": null,
+            "icon": null,
+            "listName": "/api/3/picklist_names/2c2eb812-51c5-4a8d-a3af-a8434e222528",
+            "uuid": "ada597a0-8b85-4959-880f-a55a0160407f"
+        },
+        {
+            "@id": "/api/3/picklists/cfaf883a-52c9-47a1-9426-8410ffb13e9a",
+            "@type": "Picklist",
+            "itemValue": "PCI-DSS",
+            "orderIndex": 3,
+            "color": null,
+            "icon": null,
+            "listName": "/api/3/picklist_names/2c2eb812-51c5-4a8d-a3af-a8434e222528",
+            "uuid": "cfaf883a-52c9-47a1-9426-8410ffb13e9a"
+        },
+        {
+            "@id": "/api/3/picklists/6072ee70-d15d-4f4e-b282-24e7bb2467cf",
+            "@type": "Picklist",
+            "itemValue": "HIPAA",
+            "orderIndex": 4,
+            "color": null,
+            "icon": null,
+            "listName": "/api/3/picklist_names/2c2eb812-51c5-4a8d-a3af-a8434e222528",
+            "uuid": "6072ee70-d15d-4f4e-b282-24e7bb2467cf"
+        },
+        {
+            "@id": "/api/3/picklists/2b621c72-9c44-4c05-b3be-970d4d7fd6fb",
+            "@type": "Picklist",
+            "itemValue": "SOC 2",
+            "orderIndex": 5,
+            "color": null,
+            "icon": null,
+            "listName": "/api/3/picklist_names/2c2eb812-51c5-4a8d-a3af-a8434e222528",
+            "uuid": "2b621c72-9c44-4c05-b3be-970d4d7fd6fb"
+        },
+        {
+            "@id": "/api/3/picklists/42d638df-eaa4-4842-8724-2da9acb364d1",
+            "@type": "Picklist",
+            "itemValue": "GDPR",
+            "orderIndex": 6,
+            "color": null,
+            "icon": null,
+            "listName": "/api/3/picklist_names/2c2eb812-51c5-4a8d-a3af-a8434e222528",
+            "uuid": "42d638df-eaa4-4842-8724-2da9acb364d1"
+        },
+        {
+            "@id": "/api/3/picklists/6861169d-21ba-4c76-84f5-91b281fbe5f0",
+            "@type": "Picklist",
+            "itemValue": "CMMC",
+            "orderIndex": 7,
+            "color": null,
+            "icon": null,
+            "listName": "/api/3/picklist_names/2c2eb812-51c5-4a8d-a3af-a8434e222528",
+            "uuid": "6861169d-21ba-4c76-84f5-91b281fbe5f0"
+        }
+    ],
+    "uuid": "2c2eb812-51c5-4a8d-a3af-a8434e222528"
+}

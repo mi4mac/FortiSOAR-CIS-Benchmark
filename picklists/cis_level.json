@@ -1,0 +1,50 @@
+{
+    "@context": "/api/3/contexts/PicklistName",
+    "@id": "/api/3/picklist_names/5a84131c-f4e8-4681-84c1-08b6b7bac853",
+    "@type": "PicklistName",
+    "name": "CIS Level",
+    "system": false,
+    "picklists": [
+        {
+            "@id": "/api/3/picklists/4f68d6c7-00b9-47c2-88ed-17fcf54b17e5",
+            "@type": "Picklist",
+            "itemValue": "L1",
+            "orderIndex": 0,
+            "color": null,
+            "icon": null,
+            "listName": "/api/3/picklist_names/5a84131c-f4e8-4681-84c1-08b6b7bac853",
+            "uuid": "4f68d6c7-00b9-47c2-88ed-17fcf54b17e5"
+        },
+        {
+            "@id": "/api/3/picklists/a9727a94-7474-41e3-9ad7-ef4b9fd94f78",
+            "@type": "Picklist",
+            "itemValue": "L2",
+            "orderIndex": 1,
+            "color": null,
+            "icon": null,
+            "listName": "/api/3/picklist_names/5a84131c-f4e8-4681-84c1-08b6b7bac853",
+            "uuid": "a9727a94-7474-41e3-9ad7-ef4b9fd94f78"
+        },
+        {
+            "@id": "/api/3/picklists/67d9b12c-1c59-447f-b8da-70f8904a4244",
+            "@type": "Picklist",
+            "itemValue": "Level 1",
+            "orderIndex": 2,
+            "color": null,
+            "icon": null,
+            "listName": "/api/3/picklist_names/5a84131c-f4e8-4681-84c1-08b6b7bac853",
+            "uuid": "67d9b12c-1c59-447f-b8da-70f8904a4244"
+        },
+        {
+            "@id": "/api/3/picklists/085e11d1-00ce-48d2-b6ab-b014a3481915",
+            "@type": "Picklist",
+            "itemValue": "Level 2",
+            "orderIndex": 3,
+            "color": null,
+            "icon": null,
+            "listName": "/api/3/picklist_names/5a84131c-f4e8-4681-84c1-08b6b7bac853",
+            "uuid": "085e11d1-00ce-48d2-b6ab-b014a3481915"
+        }
+    ],
+    "uuid": "5a84131c-f4e8-4681-84c1-08b6b7bac853"
+}

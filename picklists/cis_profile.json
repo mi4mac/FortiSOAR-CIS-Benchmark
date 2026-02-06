@@ -1,0 +1,50 @@
+{
+    "@context": "/api/3/contexts/PicklistName",
+    "@id": "/api/3/picklist_names/d272ab9c-2ffc-4b34-acf3-db82dbbd77e6",
+    "@type": "PicklistName",
+    "name": "CIS Profile",
+    "system": false,
+    "picklists": [
+        {
+            "@id": "/api/3/picklists/ab494adb-ec07-4abe-8686-d1960ef78ec2",
+            "@type": "Picklist",
+            "itemValue": "Workstation",
+            "orderIndex": 0,
+            "color": null,
+            "icon": null,
+            "listName": "/api/3/picklist_names/d272ab9c-2ffc-4b34-acf3-db82dbbd77e6",
+            "uuid": "ab494adb-ec07-4abe-8686-d1960ef78ec2"
+        },
+        {
+            "@id": "/api/3/picklists/cd46c96d-57f4-436b-98e6-41fb30355d03",
+            "@type": "Picklist",
+            "itemValue": "Server",
+            "orderIndex": 1,
+            "color": null,
+            "icon": null,
+            "listName": "/api/3/picklist_names/d272ab9c-2ffc-4b34-acf3-db82dbbd77e6",
+            "uuid": "cd46c96d-57f4-436b-98e6-41fb30355d03"
+        },
+        {
+            "@id": "/api/3/picklists/8c024c6c-fe0e-40ae-b2d0-4a1e9fcec1da",
+            "@type": "Picklist",
+            "itemValue": "Network",
+            "orderIndex": 2,
+            "color": null,
+            "icon": null,
+            "listName": "/api/3/picklist_names/d272ab9c-2ffc-4b34-acf3-db82dbbd77e6",
+            "uuid": "8c024c6c-fe0e-40ae-b2d0-4a1e9fcec1da"
+        },
+        {
+            "@id": "/api/3/picklists/a36c984a-f596-4e22-b22c-07ebff308c8c",
+            "@type": "Picklist",
+            "itemValue": "Cloud",
+            "orderIndex": 3,
+            "color": null,
+            "icon": null,
+            "listName": "/api/3/picklist_names/d272ab9c-2ffc-4b34-acf3-db82dbbd77e6",
+            "uuid": "a36c984a-f596-4e22-b22c-07ebff308c8c"
+        }
+    ],
+    "uuid": "d272ab9c-2ffc-4b34-acf3-db82dbbd77e6"
+}

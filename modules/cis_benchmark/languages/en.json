@@ -1,0 +1,20 @@
+{
+    "CIS_BENCHMARK": {
+        "MODULE_DETAILS": {
+            "SINGULAR_NAME": "CIS Benchmark",
+            "PLURAL_NAME": "CIS Benchmarks"
+        },
+        "FIELDS": {
+            "NAME": "Name",
+            "BENCHMARK_ID": "Benchmark ID",
+            "VERSION": "Version",
+            "PRODUCT": "Product",
+            "PLATFORM": "Platform",
+            "PROFILE": "Profile",
+            "PUBLISHED_DATE": "Published Date",
+            "SOURCE_URL": "Source URL",
+            "DESCRIPTION": "Description",
+            "NOTES": "Notes"
+        }
+    }
+}

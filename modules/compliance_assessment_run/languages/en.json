@@ -1,0 +1,19 @@
+{
+    "COMPLIANCE_ASSESSMENT_RUN": {
+        "MODULE_DETAILS": {
+            "SINGULAR_NAME": "Compliance Assessment Run",
+            "PLURAL_NAME": "Compliance Assessment Runs"
+        },
+        "FIELDS": {
+            "RUN_ID": "Run ID",
+            "SCOPE": "Scope",
+            "TOOL_NAME": "Tool Name",
+            "TOOL_NAME_DISPLAY": "Tool Name (Display)",
+            "STATUS": "Status",
+            "STARTED_AT": "Started At",
+            "COMPLETED_AT": "Completed At",
+            "INITIATED_BY": "Initiated By",
+            "NOTES": "Notes"
+        }
+    }
+}

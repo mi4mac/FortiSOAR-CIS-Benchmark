@@ -1,0 +1,60 @@
+{
+    "@context": "/api/3/contexts/SystemViewTemplate",
+    "@type": "SystemViewTemplate",
+    "type": "rows",
+    "config": {
+        "rows": [
+            {
+                "columns": [
+                    {
+                        "widgets": [
+                            {
+                                "type": "grid",
+                                "config": {
+                                    "wid": "538bd8ee-dc98-40f1-acc3-cced89cce006",
+                                    "module": "configuration",
+                                    "columns": [
+                                        "id",
+                                        "assessment_run",
+                                        "device_id",
+                                        "device_name",
+                                        "device_type",
+                                        "config_version",
+                                        "retrieved_at",
+                                        "raw_config",
+                                        "config_hash",
+                                        "status",
+                                        "error_message",
+                                        "createDate",
+                                        "createUser",
+                                        "recordTags"
+                                    ],
+                                    "expandableCol": [],
+                                    "relationshipField": [],
+                                    "checkboxStatus": true,
+                                    "editableFields": true,
+                                    "actionButtons": [],
+                                    "query": {
+                                        "sort": [],
+                                        "limit": 30,
+                                        "logic": "AND",
+                                        "filters": []
+                                    }
+                                }
+                            }
+                        ],
+                        "style": "col-lg-12"
+                    }
+                ],
+                "wid": "0705c181-1cac-4d63-87c4-ab287afb90ba",
+                "_collapsed": false
+            }
+        ],
+        "wid": "9868611c-b195-4548-8269-8b0d9dcd8640",
+        "metadata": {
+            "customTemplateTitle": "configuration",
+            "originalTemplateTitle": "configuration"
+        }
+    },
+    "uuid": "modules-configuration-list"
+}

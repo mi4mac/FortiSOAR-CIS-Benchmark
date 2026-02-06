@@ -1,0 +1,50 @@
+{
+    "@context": "/api/3/contexts/PicklistName",
+    "@id": "/api/3/picklist_names/f0c64afd-9487-435a-be1d-57cf3c19ebb9",
+    "@type": "PicklistName",
+    "name": "CIS Severity",
+    "system": false,
+    "picklists": [
+        {
+            "@id": "/api/3/picklists/c96cec9e-94ae-435b-8d32-9e353bb6aef2",
+            "@type": "Picklist",
+            "itemValue": "Critical",
+            "orderIndex": 0,
+            "color": null,
+            "icon": null,
+            "listName": "/api/3/picklist_names/f0c64afd-9487-435a-be1d-57cf3c19ebb9",
+            "uuid": "c96cec9e-94ae-435b-8d32-9e353bb6aef2"
+        },
+        {
+            "@id": "/api/3/picklists/ea5480fd-985f-43bd-9a5d-753ed67e2082",
+            "@type": "Picklist",
+            "itemValue": "High",
+            "orderIndex": 1,
+            "color": null,
+            "icon": null,
+            "listName": "/api/3/picklist_names/f0c64afd-9487-435a-be1d-57cf3c19ebb9",
+            "uuid": "ea5480fd-985f-43bd-9a5d-753ed67e2082"
+        },
+        {
+            "@id": "/api/3/picklists/ab4c4879-a409-4da9-8734-60fd75af97ce",
+            "@type": "Picklist",
+            "itemValue": "Medium",
+            "orderIndex": 2,
+            "color": null,
+            "icon": null,
+            "listName": "/api/3/picklist_names/f0c64afd-9487-435a-be1d-57cf3c19ebb9",
+            "uuid": "ab4c4879-a409-4da9-8734-60fd75af97ce"
+        },
+        {
+            "@id": "/api/3/picklists/625523b8-32ae-4691-aff8-03c81a03ed59",
+            "@type": "Picklist",
+            "itemValue": "Low",
+            "orderIndex": 3,
+            "color": null,
+            "icon": null,
+            "listName": "/api/3/picklist_names/f0c64afd-9487-435a-be1d-57cf3c19ebb9",
+            "uuid": "625523b8-32ae-4691-aff8-03c81a03ed59"
+        }
+    ],
+    "uuid": "f0c64afd-9487-435a-be1d-57cf3c19ebb9"
+}

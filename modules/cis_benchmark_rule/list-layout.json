@@ -1,0 +1,65 @@
+{
+    "@context": "/api/3/contexts/SystemViewTemplate",
+    "@type": "SystemViewTemplate",
+    "type": "rows",
+    "config": {
+        "rows": [
+            {
+                "columns": [
+                    {
+                        "widgets": [
+                            {
+                                "type": "grid",
+                                "config": {
+                                    "wid": "beeb0c9d-18c7-4910-b545-5ff463ba5c66",
+                                    "module": "cis_benchmark_rule",
+                                    "columns": [
+                                        "id",
+                                        "rule_id",
+                                        "benchmark",
+                                        "device_type",
+                                        "control_name",
+                                        "cis_level",
+                                        "description",
+                                        "expected_values",
+                                        "validation_logic",
+                                        "remediation_steps",
+                                        "severity",
+                                        "is_active",
+                                        "references_text",
+                                        "audit",
+                                        "rationale",
+                                        "impact",
+                                        "createDate",
+                                        "createUser",
+                                        "recordTags"
+                                    ],
+                                    "expandableCol": [],
+                                    "relationshipField": [],
+                                    "checkboxStatus": true,
+                                    "editableFields": true,
+                                    "actionButtons": [],
+                                    "query": {
+                                        "sort": [],
+                                        "limit": 30,
+                                        "logic": "AND",
+                                        "filters": []
+                                    }
+                                }
+                            }
+                        ],
+                        "style": "col-lg-12"
+                    }
+                ],
+                "wid": "f0ccdd31-f1eb-41f5-a5ef-da85f16e0b17",
+                "_collapsed": false
+            }
+        ],
+        "wid": "61a43d9d-116c-4afe-9fb6-7890a496e09a",
+        "metadata": {
+            "customTemplateTitle": "cis_benchmark_rule",
+            "originalTemplateTitle": "cis_benchmark_rule"
+        }
+    },
+    "uuid": "modules-cis_benchmark_rule-list"
+}

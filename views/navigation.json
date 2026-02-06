@@ -1,0 +1,152 @@
+{
+    "@context": "\/api\/3\/contexts\/SystemViewTemplate",
+    "@type": "SystemViewTemplate",
+    "type": "app",
+    "config": {
+        "navigation": [
+            {
+                "editMode": false,
+                "icon": "icon icon-reports",
+                "items": [
+                    {
+                        "editMode": false,
+                        "icon": "icon icon-table",
+                        "require": {
+                            "action": "read",
+                            "module": "cis_benchmark"
+                        },
+                        "state": {
+                            "name": "main.modules.list",
+                            "parameters": {
+                                "module": "cis_benchmark"
+                            }
+                        },
+                        "title": "CIS Benchmarks"
+                    },
+                    {
+                        "editMode": false,
+                        "icon": "icon icon-table",
+                        "require": {
+                            "action": "read",
+                            "module": "cis_benchmark_rule"
+                        },
+                        "state": {
+                            "name": "main.modules.list",
+                            "parameters": {
+                                "module": "cis_benchmark_rule"
+                            }
+                        },
+                        "title": "CIS Benchmark Rules"
+                    },
+                    {
+                        "editMode": false,
+                        "icon": "icon icon-table",
+                        "require": {
+                            "action": "read",
+                            "module": "cis_rule"
+                        },
+                        "state": {
+                            "name": "main.modules.list",
+                            "parameters": {
+                                "module": "cis_rule"
+                            }
+                        },
+                        "title": "CIS Rules (Legacy)"
+                    },
+                    {
+                        "editMode": false,
+                        "icon": "icon icon-table",
+                        "require": {
+                            "action": "read",
+                            "module": "cis_compliance_result"
+                        },
+                        "state": {
+                            "name": "main.modules.list",
+                            "parameters": {
+                                "module": "cis_compliance_result"
+                            }
+                        },
+                        "title": "CIS Compliance Results (Legacy)"
+                    },
+                    {
+                        "editMode": false,
+                        "icon": "icon icon-table",
+                        "require": {
+                            "action": "read",
+                            "module": "compliance_assessment_run"
+                        },
+                        "state": {
+                            "name": "main.modules.list",
+                            "parameters": {
+                                "module": "compliance_assessment_run"
+                            }
+                        },
+                        "title": "Compliance Assessment Runs"
+                    },
+                    {
+                        "editMode": false,
+                        "icon": "icon icon-table",
+                        "require": {
+                            "action": "read",
+                            "module": "compliance_requirement"
+                        },
+                        "state": {
+                            "name": "main.modules.list",
+                            "parameters": {
+                                "module": "compliance_requirement"
+                            }
+                        },
+                        "title": "Compliance Requirements"
+                    },
+                    {
+                        "editMode": false,
+                        "icon": "icon icon-table",
+                        "require": {
+                            "action": "read",
+                            "module": "compliance_finding"
+                        },
+                        "state": {
+                            "name": "main.modules.list",
+                            "parameters": {
+                                "module": "compliance_finding"
+                            }
+                        },
+                        "title": "Compliance Findings"
+                    },
+                    {
+                        "editMode": false,
+                        "icon": "icon icon-table",
+                        "require": {
+                            "action": "read",
+                            "module": "compliance_report"
+                        },
+                        "state": {
+                            "name": "main.modules.list",
+                            "parameters": {
+                                "module": "compliance_report"
+                            }
+                        },
+                        "title": "Compliance Reports"
+                    },
+                    {
+                        "editMode": false,
+                        "icon": "icon icon-table",
+                        "require": {
+                            "action": "read",
+                            "module": "configuration"
+                        },
+                        "state": {
+                            "name": "main.modules.list",
+                            "parameters": {
+                                "module": "configuration"
+                            }
+                        },
+                        "title": "Configurations"
+                    }
+                ],
+                "title": "CIS Benchmark"
+            }
+        ]
+    },
+    "uuid": "navigation"
+}

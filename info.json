@@ -1,0 +1,91 @@
+{
+    "name": "cisCompliance",
+    "version": "1.0.0",
+    "type": "solutionpack",
+    "local": true,
+    "label": "CIS Compliance",
+    "dependencies": [],
+    "prerequisite": null,
+    "publisher": "Custom",
+    "certified": "false",
+    "description": "CIS compliance data model with configuration tracking and assessment runs.",
+    "help": "",
+    "category": [
+        "Compliance"
+    ],
+    "supportInfo": "",
+    "iconLarge": null,
+    "postInstallConfig": null,
+    "fsrMinCompatibility": "7.6.5",
+    "date": "2026-02-05T17:20:25.880708+00:00",
+    "contents": {
+        "picklistNames": [
+            {
+                "name": "CIS Level"
+            },
+            {
+                "name": "CIS Profile"
+            },
+            {
+                "name": "CIS Severity"
+            },
+            {
+                "name": "Compliance Framework"
+            },
+            {
+                "name": "Config Status"
+            },
+            {
+                "name": "Device Type"
+            },
+            {
+                "name": "Finding Status"
+            }
+        ],
+        "modules": {
+            "cis_benchmark": {
+                "name": "CIS Benchmarks",
+                "apiName": "cis_benchmark"
+            },
+            "cis_benchmark_rule": {
+                "name": "CIS Benchmark Rules",
+                "apiName": "cis_benchmark_rule"
+            },
+            "configuration": {
+                "name": "Configurations",
+                "apiName": "configuration"
+            },
+            "compliance_assessment_run": {
+                "name": "Compliance Assessment Runs",
+                "apiName": "compliance_assessment_run"
+            },
+            "compliance_finding": {
+                "name": "Compliance Findings",
+                "apiName": "compliance_finding"
+            },
+            "compliance_report": {
+                "name": "Compliance Reports",
+                "apiName": "compliance_report"
+            },
+            "compliance_requirement": {
+                "name": "Compliance Requirements",
+                "apiName": "compliance_requirement"
+            }
+        },
+        "playbooks": [
+            {
+                "name": "CIS Compliance"
+            }
+        ],
+        "views": {
+            "navigation": [
+                "CIS Benchmark"
+            ]
+        },
+        "roles": [
+            {
+                "name": "Full App Permissions"
+            }
+        ]
+    }
+}

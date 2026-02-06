@@ -1,0 +1,59 @@
+{
+    "@context": "/api/3/contexts/SystemViewTemplate",
+    "@type": "SystemViewTemplate",
+    "type": "rows",
+    "config": {
+        "rows": [
+            {
+                "columns": [
+                    {
+                        "widgets": [
+                            {
+                                "type": "grid",
+                                "config": {
+                                    "wid": "054a34ba-1027-4f5f-94d1-a772537ac547",
+                                    "module": "compliance_assessment_run",
+                                    "columns": [
+                                        "id",
+                                        "run_id",
+                                        "scope",
+                                        "tool_name",
+                                        "tool_name_display",
+                                        "status",
+                                        "started_at",
+                                        "completed_at",
+                                        "initiated_by",
+                                        "notes",
+                                        "createDate",
+                                        "createUser",
+                                        "recordTags"
+                                    ],
+                                    "expandableCol": [],
+                                    "relationshipField": [],
+                                    "checkboxStatus": true,
+                                    "editableFields": true,
+                                    "actionButtons": [],
+                                    "query": {
+                                        "sort": [],
+                                        "limit": 30,
+                                        "logic": "AND",
+                                        "filters": []
+                                    }
+                                }
+                            }
+                        ],
+                        "style": "col-lg-12"
+                    }
+                ],
+                "wid": "e7419f97-5354-4996-ad5f-0ce66ca591f7",
+                "_collapsed": false
+            }
+        ],
+        "wid": "35e644e3-064b-4e86-9a43-c289136a1252",
+        "metadata": {
+            "customTemplateTitle": "compliance_assessment_run",
+            "originalTemplateTitle": "compliance_assessment_run"
+        }
+    },
+    "uuid": "modules-compliance_assessment_run-list"
+}

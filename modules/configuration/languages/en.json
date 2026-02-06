@@ -1,0 +1,20 @@
+{
+    "CONFIGURATION": {
+        "MODULE_DETAILS": {
+            "SINGULAR_NAME": "Configuration",
+            "PLURAL_NAME": "Configurations"
+        },
+        "FIELDS": {
+            "ASSESSMENT_RUN": "Assessment Run",
+            "DEVICE_ID": "Device ID",
+            "DEVICE_NAME": "Device Name",
+            "DEVICE_TYPE": "Device Type",
+            "CONFIG_VERSION": "Config Version",
+            "RETRIEVED_AT": "Retrieved At",
+            "RAW_CONFIG": "Raw Config",
+            "CONFIG_HASH": "Config Hash",
+            "STATUS": "Status",
+            "ERROR_MESSAGE": "Error Message"
+        }
+    }
+}

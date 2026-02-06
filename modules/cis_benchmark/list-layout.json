@@ -1,0 +1,60 @@
+{
+    "@context": "/api/3/contexts/SystemViewTemplate",
+    "@type": "SystemViewTemplate",
+    "type": "rows",
+    "config": {
+        "rows": [
+            {
+                "columns": [
+                    {
+                        "widgets": [
+                            {
+                                "type": "grid",
+                                "config": {
+                                    "wid": "42462d25-42b9-42ea-8873-6a5ad2c624be",
+                                    "module": "cis_benchmark",
+                                    "columns": [
+                                        "id",
+                                        "name",
+                                        "benchmark_id",
+                                        "version",
+                                        "product",
+                                        "platform",
+                                        "profile",
+                                        "published_date",
+                                        "source_url",
+                                        "description",
+                                        "notes",
+                                        "createDate",
+                                        "createUser",
+                                        "recordTags"
+                                    ],
+                                    "expandableCol": [],
+                                    "relationshipField": [],
+                                    "checkboxStatus": true,
+                                    "editableFields": true,
+                                    "actionButtons": [],
+                                    "query": {
+                                        "sort": [],
+                                        "limit": 30,
+                                        "logic": "AND",
+                                        "filters": []
+                                    }
+                                }
+                            }
+                        ],
+                        "style": "col-lg-12"
+                    }
+                ],
+                "wid": "b39f2354-e28f-487e-98f5-e5559747ef08",
+                "_collapsed": false
+            }
+        ],
+        "wid": "11f4fb27-5f7a-47e4-8a26-f387e51ae9d8",
+        "metadata": {
+            "customTemplateTitle": "cis_benchmark",
+            "originalTemplateTitle": "cis_benchmark"
+        }
+    },
+    "uuid": "modules-cis_benchmark-list"
+}

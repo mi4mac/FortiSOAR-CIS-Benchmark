@@ -1,0 +1,62 @@
+{
+    "@context": "/api/3/contexts/SystemViewTemplate",
+    "@type": "SystemViewTemplate",
+    "type": "rows",
+    "config": {
+        "rows": [
+            {
+                "columns": [
+                    {
+                        "widgets": [
+                            {
+                                "type": "grid",
+                                "config": {
+                                    "wid": "3481ee73-a69e-494c-a957-eb741434cd40",
+                                    "module": "compliance_finding",
+                                    "columns": [
+                                        "id",
+                                        "finding_id",
+                                        "assessment_run",
+                                        "configuration",
+                                        "cis_rule",
+                                        "actual_value",
+                                        "expected_value",
+                                        "status",
+                                        "severity",
+                                        "evidence",
+                                        "created_date",
+                                        "remediation_task",
+                                        "comments",
+                                        "createDate",
+                                        "createUser",
+                                        "recordTags"
+                                    ],
+                                    "expandableCol": [],
+                                    "relationshipField": [],
+                                    "checkboxStatus": true,
+                                    "editableFields": true,
+                                    "actionButtons": [],
+                                    "query": {
+                                        "sort": [],
+                                        "limit": 30,
+                                        "logic": "AND",
+                                        "filters": []
+                                    }
+                                }
+                            }
+                        ],
+                        "style": "col-lg-12"
+                    }
+                ],
+                "wid": "5ee41c57-6f2c-470e-9583-65f4ef413871",
+                "_collapsed": false
+            }
+        ],
+        "wid": "270580c9-b341-43fe-9218-368a10b6e028",
+        "metadata": {
+            "customTemplateTitle": "compliance_finding",
+            "originalTemplateTitle": "compliance_finding"
+        }
+    },
+    "uuid": "modules-compliance_finding-list"
+}

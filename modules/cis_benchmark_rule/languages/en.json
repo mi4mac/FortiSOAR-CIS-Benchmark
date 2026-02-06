@@ -1,0 +1,21 @@
+{
+    "CIS_BENCHMARK_RULE": {
+        "MODULE_DETAILS": {
+            "SINGULAR_NAME": "CIS Benchmark Rule",
+            "PLURAL_NAME": "CIS Benchmark Rules"
+        },
+        "FIELDS": {
+            "RULE_ID": "Rule ID",
+            "BENCHMARK": "Benchmark",
+            "DEVICE_TYPE": "Device Type",
+            "CONTROL_NAME": "Control Name",
+            "CIS_LEVEL": "CIS Level",
+            "DESCRIPTION": "Description",
+            "EXPECTED_VALUES": "Expected Value(s)",
+            "VALIDATION_LOGIC": "Validation Logic",
+            "REMEDIATION_STEPS": "Remediation Steps",
+            "SEVERITY": "Severity",
+            "IS_ACTIVE": "Is Active"
+        }
+    }
+}

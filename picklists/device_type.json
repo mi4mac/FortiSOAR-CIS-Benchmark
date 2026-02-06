@@ -1,0 +1,60 @@
+{
+    "@context": "/api/3/contexts/PicklistName",
+    "@id": "/api/3/picklist_names/1bbd1e9a-fc83-4e26-af4b-4ec904decc6d",
+    "@type": "PicklistName",
+    "name": "Device Type",
+    "system": false,
+    "picklists": [
+        {
+            "@id": "/api/3/picklists/36ad91ad-4632-4912-b269-128cfed9d19b",
+            "@type": "Picklist",
+            "itemValue": "FortiGate",
+            "orderIndex": 0,
+            "color": null,
+            "icon": null,
+            "listName": "/api/3/picklist_names/1bbd1e9a-fc83-4e26-af4b-4ec904decc6d",
+            "uuid": "36ad91ad-4632-4912-b269-128cfed9d19b"
+        },
+        {
+            "@id": "/api/3/picklists/8614437b-84c4-482e-9852-23510dc20343",
+            "@type": "Picklist",
+            "itemValue": "Cisco IOS",
+            "orderIndex": 1,
+            "color": null,
+            "icon": null,
+            "listName": "/api/3/picklist_names/1bbd1e9a-fc83-4e26-af4b-4ec904decc6d",
+            "uuid": "8614437b-84c4-482e-9852-23510dc20343"
+        },
+        {
+            "@id": "/api/3/picklists/07cd81de-06ee-435a-9d16-24a11029089a",
+            "@type": "Picklist",
+            "itemValue": "Juniper",
+            "orderIndex": 2,
+            "color": null,
+            "icon": null,
+            "listName": "/api/3/picklist_names/1bbd1e9a-fc83-4e26-af4b-4ec904decc6d",
+            "uuid": "07cd81de-06ee-435a-9d16-24a11029089a"
+        },
+        {
+            "@id": "/api/3/picklists/69f0d777-99f7-40ff-9bdf-915c47811d7c",
+            "@type": "Picklist",
+            "itemValue": "Palo Alto",
+            "orderIndex": 3,
+            "color": null,
+            "icon": null,
+            "listName": "/api/3/picklist_names/1bbd1e9a-fc83-4e26-af4b-4ec904decc6d",
+            "uuid": "69f0d777-99f7-40ff-9bdf-915c47811d7c"
+        },
+        {
+            "@id": "/api/3/picklists/27ef1c69-14ff-49d1-acfc-db9612403f6d",
+            "@type": "Picklist",
+            "itemValue": "Docker",
+            "orderIndex": 4,
+            "color": null,
+            "icon": null,
+            "listName": "/api/3/picklist_names/1bbd1e9a-fc83-4e26-af4b-4ec904decc6d",
+            "uuid": "27ef1c69-14ff-49d1-acfc-db9612403f6d"
+        }
+    ],
+    "uuid": "1bbd1e9a-fc83-4e26-af4b-4ec904decc6d"
+}
